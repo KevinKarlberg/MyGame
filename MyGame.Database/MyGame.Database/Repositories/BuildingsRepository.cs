@@ -10,17 +10,14 @@ using System.Data.Entity;
 namespace MyGame.Database.Repositories
 {
     public class BuildingsRepository : IRepository<Buildings>
+
     {
-        private MyGameDBContext ctx;
-        public BuildingsRepository()
-        {
-            this.ctx = new MyGameDBContext();
-        }
+    
         public IQueryable<Buildings> GetAll()
         {
             var buildings = new List<Buildings>();
 
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 buildings = ctx.Buildings
                      .Include(b => b.BuildingId)
@@ -32,7 +29,7 @@ namespace MyGame.Database.Repositories
         public Buildings GetById(Guid id)
         {
             Buildings building;
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 building = ctx.Buildings.Where(b => b.BuildingId == id)
                     .Include(b => b.BuildingId)
@@ -47,7 +44,7 @@ namespace MyGame.Database.Repositories
         }
         public bool Delete(Guid id) 
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var building = ctx.Buildings.Where(b => b.BuildingId == id)
                        .Include(b => b.BuildingId)
@@ -65,7 +62,7 @@ namespace MyGame.Database.Repositories
         }
         public void Update(Buildings building)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var item = ctx.Buildings.Where(b => b.BuildingId == building.BuildingId).FirstOrDefault();
                 if (item != null)
@@ -78,7 +75,7 @@ namespace MyGame.Database.Repositories
         {
             try
             {
-                using (ctx)
+                using (var ctx = new MyGameDBContext())
                 {
                     ctx.Buildings.Add(building);
                     ctx.SaveChanges();
