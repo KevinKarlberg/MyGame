@@ -140,6 +140,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyGameDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BuildingsRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
