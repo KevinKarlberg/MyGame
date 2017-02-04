@@ -35,6 +35,7 @@ namespace MyGame.Database.Repositories
             using (ctx)
             {
                 building = ctx.Buildings.Where(b => b.BuildingId == id)
+                    .Include(b => b.BuildingId)
                     .Include(b => b.BuildingName)
                     .FirstOrDefault();
             }
