@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.Database", "MyGame.Database\MyGame.Database.csproj", "{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.LogicLayer", "MyGame.LogicLayer\MyGame.LogicLayer.csproj", "{1F196630-33BF-4B43-9C55-FE69569C0F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.MVCSite", "MyGame.MVCSite\MyGame.MVCSite.csproj", "{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F196630-33BF-4B43-9C55-FE69569C0F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F196630-33BF-4B43-9C55-FE69569C0F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F196630-33BF-4B43-9C55-FE69569C0F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F196630-33BF-4B43-9C55-FE69569C0F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
