@@ -143,6 +143,7 @@
     <Compile Include="Repositories\BuildingsRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
+    <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\TroopsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
