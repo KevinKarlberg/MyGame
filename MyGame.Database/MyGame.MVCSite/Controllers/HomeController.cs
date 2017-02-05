@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyGame.DB.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,10 @@ namespace MyGame.MVCSite.Controllers
     {
         public ActionResult Index()
         {
+            using(var rep = new BuildingsRepository())
+            {
+                var TEST = rep.GetAll();
+            }
             return View();
         }
 
