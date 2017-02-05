@@ -65,17 +65,9 @@
     <Compile Include="DB.Models\Ships.cs" />
     <Compile Include="DB.Models\Terrain.cs" />
     <Compile Include="DB.Models\Troops.cs" />
-    <Compile Include="Migrations\201702050741435_InitialMigration.cs" />
-    <Compile Include="Migrations\201702050741435_InitialMigration.Designer.cs">
-      <DependentUpon>201702050741435_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702050743027_SecondMigration.cs" />
-    <Compile Include="Migrations\201702050743027_SecondMigration.Designer.cs">
-      <DependentUpon>201702050743027_SecondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702050746258_ThirdMigration.cs" />
-    <Compile Include="Migrations\201702050746258_ThirdMigration.Designer.cs">
-      <DependentUpon>201702050746258_ThirdMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201702050753578_TestMigration.cs" />
+    <Compile Include="Migrations\201702050753578_TestMigration.Designer.cs">
+      <DependentUpon>201702050753578_TestMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyGameDBContext.cs" />
@@ -84,6 +76,7 @@
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
+    <Compile Include="Repositories\RacesRepository.cs" />
     <Compile Include="Repositories\TroopsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,14 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702050741435_InitialMigration.resx">
-      <DependentUpon>201702050741435_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702050743027_SecondMigration.resx">
-      <DependentUpon>201702050743027_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702050746258_ThirdMigration.resx">
-      <DependentUpon>201702050746258_ThirdMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702050753578_TestMigration.resx">
+      <DependentUpon>201702050753578_TestMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

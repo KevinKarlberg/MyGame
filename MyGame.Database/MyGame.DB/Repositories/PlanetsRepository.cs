@@ -10,16 +10,11 @@ namespace MyGame.DB.Repositories
 {
     public class PlanetsRepository : IRepository<Planets>
     {
-        private MyGameDBContext ctx;
-        public PlanetsRepository()
-        {
-            this.ctx = new MyGameDBContext();
-        }
         public IQueryable<Planets> GetAll()
         {
             var planets = new List<Planets>();
 
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 planets = ctx.Planets
                      .Include(b => b.PlanetId)
@@ -31,7 +26,7 @@ namespace MyGame.DB.Repositories
         public Planets GetById(Guid id)
         {
             Planets planet;
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 planet = ctx.Planets.Where(b => b.PlanetId == id)
                     .Include(p => p.PlanetId)
@@ -47,7 +42,7 @@ namespace MyGame.DB.Repositories
         }
         public bool Delete(Guid id)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var planets = ctx.Planets.Where(p => p.PlanetId == id)
                        .Include(p => p.PlanetId)
@@ -66,7 +61,7 @@ namespace MyGame.DB.Repositories
         }
         public void Update(Planets planet)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var item = ctx.Planets.Where(p => p.PlanetId == planet.PlanetId).FirstOrDefault();
                 if (item != null)
@@ -81,7 +76,7 @@ namespace MyGame.DB.Repositories
         {
             try
             {
-                using (ctx)
+                using (var ctx = new MyGameDBContext())
                 {
                     ctx.Planets.Add(planet);
                     ctx.SaveChanges();
