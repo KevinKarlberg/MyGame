@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace MyGame.DB.Repositories
 {
-    public class BuildingsRepository : IRepository<Buildings>
+    public class BuildingsRepository : IRepository<Buildings>,IDisposable
     {
         public IQueryable<Buildings> GetAll()
         {
@@ -23,6 +23,10 @@ namespace MyGame.DB.Repositories
                      .ToList();
             }
             return buildings.AsQueryable();
+        }
+        public void Dispose()
+        {
+            // Dispose runs after Using
         }
         public Buildings GetById(Guid id)
         {
@@ -84,5 +88,7 @@ namespace MyGame.DB.Repositories
 
             }
         }
+
+      
     }
 }
