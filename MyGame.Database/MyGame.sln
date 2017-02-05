@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.Database", "MyGame.Database\MyGame.Database.csproj", "{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.MVCSite", "MyGame.MVCSite\MyGame.MVCSite.csproj", "{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.DB", "MyGame.DB\MyGame.DB.csproj", "{239059EC-AFC1-4D92-BF40-A540D2038F1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DEEB4C7-AAB4-4827-BDB0-7A4644A3A182}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239059EC-AFC1-4D92-BF40-A540D2038F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239059EC-AFC1-4D92-BF40-A540D2038F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239059EC-AFC1-4D92-BF40-A540D2038F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239059EC-AFC1-4D92-BF40-A540D2038F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
