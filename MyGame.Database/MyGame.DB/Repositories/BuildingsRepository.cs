@@ -32,10 +32,7 @@ namespace MyGame.DB.Repositories
             Buildings building;
             using (var ctx = new MyGameDBContext())
             {
-                building = ctx.Buildings.Where(b => b.BuildingId == id)
-                    .Include(b => b.BuildingId)
-                    .Include(b => b.BuildingName)
-                    .FirstOrDefault();
+                building = ctx.Buildings.FirstOrDefault(b => b.BuildingId == id);
             }
             return building;
         }
@@ -47,10 +44,7 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var building = ctx.Buildings.Where(b => b.BuildingId == id)
-                       .Include(b => b.BuildingId)
-                       .Include(b => b.BuildingName)
-                       .FirstOrDefault();
+                var building = ctx.Buildings.FirstOrDefault(b => b.BuildingId == id);
                 if (building != null)
                 {
                     ctx.Buildings.Remove(building);
@@ -65,10 +59,11 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Buildings.Where(b => b.BuildingId == building.BuildingId).FirstOrDefault();
+                var item = ctx.Buildings.FirstOrDefault(b => b.BuildingId == building.BuildingId);
                 if (item != null)
                 {
                     item.BuildingName = building.BuildingName;
+                    ctx.SaveChanges();
                 }
             }
         }
