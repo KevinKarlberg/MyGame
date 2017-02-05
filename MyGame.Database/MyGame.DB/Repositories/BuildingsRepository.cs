@@ -10,9 +10,7 @@ using System.Data.Entity;
 namespace MyGame.DB.Repositories
 {
     public class BuildingsRepository : IRepository<Buildings>
-
     {
-    
         public IQueryable<Buildings> GetAll()
         {
             var buildings = new List<Buildings>();

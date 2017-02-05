@@ -10,16 +10,11 @@ namespace MyGame.DB.Repositories
 {
     public class LocationRepository : IRepository<Location>
     {
-        private MyGameDBContext ctx;
-        public LocationRepository()
-        {
-            this.ctx = new MyGameDBContext();
-        }
         public IQueryable<Location> GetAll()
         {
             var locations = new List<Location>();
 
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 locations = ctx.Locations
                      .Include(l => l.GalaxyNumber)
@@ -32,7 +27,7 @@ namespace MyGame.DB.Repositories
         public Location GetById(Guid id)
         {
             Location location;
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 location = ctx.Locations.Where(b => b.LocationId == id)
                      .Include(l => l.GalaxyNumber)
@@ -48,7 +43,7 @@ namespace MyGame.DB.Repositories
         }
         public bool Delete(Guid id)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var location = ctx.Locations.Where(b => b.LocationId == id)
                        .Include(l => l.GalaxyNumber)
@@ -66,7 +61,7 @@ namespace MyGame.DB.Repositories
         }
         public void Update(Location location)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var item = ctx.Locations.Where(b => b.LocationId == location.LocationId).FirstOrDefault();
                 if (item != null)
@@ -81,7 +76,7 @@ namespace MyGame.DB.Repositories
         {
             try
             {
-                using (ctx)
+                using (var ctx = new MyGameDBContext())
                 {
                     ctx.Locations.Add(location);
                     ctx.SaveChanges();

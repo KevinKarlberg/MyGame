@@ -11,16 +11,11 @@ namespace MyGame.Database.Repositories
 {
     public class TroopsRepository : IRepository<Troops>
     {
-        private MyGameDBContext ctx;
-        public TroopsRepository()
-        {
-            this.ctx = new MyGameDBContext();
-        }
         public IQueryable<Troops> GetAll()
         {
              var troops = new List<Troops>();
 
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 troops = ctx.Troops
                      .Include(t => t.TroopID)
@@ -32,7 +27,7 @@ namespace MyGame.Database.Repositories
         public Troops GetById(Guid id)
         {
             Troops troop;
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 troop = ctx.Troops.Where(b => b.TroopID == id)
                     .Include(t => t.TroopID)
@@ -47,7 +42,7 @@ namespace MyGame.Database.Repositories
         }
         public bool Delete(Guid id)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var troops = ctx.Troops.Where(t => t.TroopID == id)
                        .Include(t => t.TroopID)
@@ -64,7 +59,7 @@ namespace MyGame.Database.Repositories
         }
         public void Update(Troops troops)
         {
-            using (ctx)
+            using (var ctx = new MyGameDBContext())
             {
                 var item = ctx.Troops.Where(t => t.TroopID == troops.TroopID).FirstOrDefault();
                 if (item != null)
@@ -77,7 +72,7 @@ namespace MyGame.Database.Repositories
         {
             try
             {
-                using (ctx)
+                using (var ctx = new MyGameDBContext())
                 {
                     ctx.Troops.Add(troops);
                     ctx.SaveChanges();
