@@ -65,9 +65,9 @@
     <Compile Include="DB.Models\Ships.cs" />
     <Compile Include="DB.Models\Terrain.cs" />
     <Compile Include="DB.Models\Troops.cs" />
-    <Compile Include="Migrations\201702050753578_TestMigration.cs" />
-    <Compile Include="Migrations\201702050753578_TestMigration.Designer.cs">
-      <DependentUpon>201702050753578_TestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201702050953036_SuccessQuestionMark.cs" />
+    <Compile Include="Migrations\201702050953036_SuccessQuestionMark.Designer.cs">
+      <DependentUpon>201702050953036_SuccessQuestionMark.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyGameDBContext.cs" />
@@ -84,8 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702050753578_TestMigration.resx">
-      <DependentUpon>201702050753578_TestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702050953036_SuccessQuestionMark.resx">
+      <DependentUpon>201702050953036_SuccessQuestionMark.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

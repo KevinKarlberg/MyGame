@@ -7,13 +7,13 @@ namespace MyGame.DB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TestMigration : IMigrationMetadata
+    public sealed partial class SuccessQuestionMark : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TestMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SuccessQuestionMark));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702050753578_TestMigration"; }
+            get { return "201702050953036_SuccessQuestionMark"; }
         }
         
         string IMigrationMetadata.Source

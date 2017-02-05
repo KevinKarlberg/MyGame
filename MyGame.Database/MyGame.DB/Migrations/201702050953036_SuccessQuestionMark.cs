@@ -3,7 +3,7 @@ namespace MyGame.DB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TestMigration : DbMigration
+    public partial class SuccessQuestionMark : DbMigration
     {
         public override void Up()
         {

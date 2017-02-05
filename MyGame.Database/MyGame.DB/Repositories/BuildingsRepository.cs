@@ -18,8 +18,7 @@ namespace MyGame.DB.Repositories
             using (var ctx = new MyGameDBContext())
             {
                 buildings = ctx.Buildings
-                     .Include(b => b.BuildingId)
-                     .Include(b => b.BuildingName)
+                 
                      .ToList();
             }
             return buildings.AsQueryable();

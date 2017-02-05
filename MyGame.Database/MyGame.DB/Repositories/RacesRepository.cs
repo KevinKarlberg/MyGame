@@ -9,8 +9,12 @@ using System.Data.Entity;
 
 namespace MyGame.DB.Repositories
 {
-    public class RacesRepository : IRepository<Races>
+    public class RacesRepository : IRepository<Races>, IDisposable
     {
+        public void Dispose()
+        {
+            // Dispose runs after Using
+        }
         public IQueryable<Races> GetAll()
         {
             var races = new List<Races>();
@@ -44,13 +48,13 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var building = ctx.Buildings.Where(b => b.BuildingId == id)
-                       .Include(b => b.BuildingId)
-                       .Include(b => b.BuildingName)
+                var race = ctx.Races.Where(r => r.RaceId == id)
+                       .Include(r => r.RaceId)
+                       .Include(r => r.RaceName)
                        .FirstOrDefault();
-                if (building != null)
+                if (race != null)
                 {
-                    ctx.Buildings.Remove(building);
+                    ctx.Races.Remove(race);
                     ctx.SaveChanges();
                     return true;
                 }
@@ -58,24 +62,24 @@ namespace MyGame.DB.Repositories
             }
 
         }
-        public void Update(Buildings building)
+        public void Update(Races race)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Buildings.Where(b => b.BuildingId == building.BuildingId).FirstOrDefault();
+                var item = ctx.Races.Where(b => b.RaceId == race.RaceId).FirstOrDefault();
                 if (item != null)
                 {
-                    item.BuildingName = building.BuildingName;
+                    item.RaceName = race.RaceName;
                 }
             }
         }
-        public void Add(Buildings building)
+        public void Add(Races race)
         {
             try
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    ctx.Buildings.Add(building);
+                    ctx.Races.Add(race);
                     ctx.SaveChanges();
                 }
             }
