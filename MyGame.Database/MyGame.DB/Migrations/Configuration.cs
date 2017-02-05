@@ -12,6 +12,7 @@ namespace MyGame.DB.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MyGame.DB.MyGameDBContext context)
