@@ -14,7 +14,6 @@ namespace MyGame.DB.DB.Models
         public int GalaxyNumber { get; set; }
         [Required]
         public int LocalCluster { get; set; }
-        [Required]
-        public int SystemNumber { get; set; }
+        public int? SystemNumber { get; set; }
     }
 }

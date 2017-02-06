@@ -4,73 +4,74 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity.Validation;
 using System.Data.Entity;
+using MyGame.DB;
 
-namespace MyGame.DB.Repositories
+namespace MyGame.Database.Repositories
 {
-    public class RacesRepository : IRepository<Races>, IDisposable
+    public class ResourceRepository : IRepository<Troops>, IDisposable
     {
         public void Dispose()
         {
             // Dispose runs after Using
         }
-        public IQueryable<Races> GetAll()
+        public IQueryable<Resources> GetAll()
         {
-            var races = new List<Races>();
+            var resources = new List<Resources>();
 
             using (var ctx = new MyGameDBContext())
             {
-                races = ctx.Races.ToList();
+                resources = ctx.Resources
+                     .ToList();
             }
-            return races.AsQueryable();
+            return resources.AsQueryable();
         }
-        public Races GetById(Guid id)
+        public Resources GetById(Guid id)
         {
-            Races race;
+            Resources resource;
             using (var ctx = new MyGameDBContext())
             {
-                race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                resource = ctx.Resources.FirstOrDefault(r => r.ResourceId == id);
             }
-            return race;
+            return resource;
         }
-        public bool Delete(Races race)
+        public bool Delete(Resources resource)
         {
-            return Delete(race.RaceId);
+            return Delete(resource.ResourceId);
         }
         public bool Delete(Guid id)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
-                if (race != null)
+                var resource = ctx.Resources.FirstOrDefault(r => r.ResourceId == id);
+                if (resource != null)
                 {
-                    ctx.Races.Remove(race);
+                    ctx.Resources.Remove(resource);
                     ctx.SaveChanges();
                     return true;
                 }
                 return false;
             }
-
         }
-        public void Update(Races race)
+        public void Update(Resources resource)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                var item = ctx.Resources.FirstOrDefault(t => t.ResourceId == resource.ResourceId);
                 if (item != null)
                 {
-                    item.RaceName = race.RaceName;
+                    item.ResourceName = resource.ResourceName;
+                    ctx.SaveChanges();
                 }
             }
         }
-        public void Add(Races race)
+        public void Add(Resources resource)
         {
             try
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    ctx.Races.Add(race);
+                    ctx.Resources.Add(resource);
                     ctx.SaveChanges();
                 }
             }

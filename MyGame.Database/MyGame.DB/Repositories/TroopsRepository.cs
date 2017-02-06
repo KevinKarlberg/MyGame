@@ -9,8 +9,12 @@ using MyGame.DB;
 
 namespace MyGame.Database.Repositories
 {
-    public class TroopsRepository : IRepository<Troops>
+    public class TroopsRepository : IRepository<Troops>, IDisposable
     {
+        public void Dispose()
+        {
+            // Dispose runs after Using
+        }
         public IQueryable<Troops> GetAll()
         {
              var troops = new List<Troops>();
@@ -18,8 +22,6 @@ namespace MyGame.Database.Repositories
             using (var ctx = new MyGameDBContext())
             {
                 troops = ctx.Troops
-                     .Include(t => t.TroopID)
-                     .Include(t => t.TroopName)
                      .ToList();
             }
             return troops.AsQueryable();
@@ -29,10 +31,7 @@ namespace MyGame.Database.Repositories
             Troops troop;
             using (var ctx = new MyGameDBContext())
             {
-                troop = ctx.Troops.Where(b => b.TroopID == id)
-                    .Include(t => t.TroopID)
-                    .Include(t => t.TroopName)
-                    .FirstOrDefault();
+                troop = ctx.Troops.FirstOrDefault(t => t.TroopID == id);
             }
             return troop;
         }
@@ -44,10 +43,7 @@ namespace MyGame.Database.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var troops = ctx.Troops.Where(t => t.TroopID == id)
-                       .Include(t => t.TroopID)
-                       .Include(t => t.TroopName)
-                       .FirstOrDefault();
+                var troops = ctx.Troops.FirstOrDefault(t => t.TroopID == id);
                 if (troops != null)
                 {
                     ctx.Troops.Remove(troops);
@@ -61,10 +57,11 @@ namespace MyGame.Database.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Troops.Where(t => t.TroopID == troops.TroopID).FirstOrDefault();
+                var item = ctx.Troops.FirstOrDefault(t => t.TroopID == troops.TroopID);
                 if (item != null)
                 {
                     item.TroopName = troops.TroopName;
+                    ctx.SaveChanges();
                 }
             }
         }

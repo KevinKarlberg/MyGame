@@ -4,73 +4,74 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity.Validation;
 using System.Data.Entity;
+using MyGame.DB;
 
-namespace MyGame.DB.Repositories
+namespace MyGame.Database.Repositories
 {
-    public class RacesRepository : IRepository<Races>, IDisposable
+    public class ShipsRepository : IRepository<Troops>, IDisposable
     {
         public void Dispose()
         {
             // Dispose runs after Using
         }
-        public IQueryable<Races> GetAll()
+        public IQueryable<Ships> GetAll()
         {
-            var races = new List<Races>();
+            var ships = new List<Ships>();
 
             using (var ctx = new MyGameDBContext())
             {
-                races = ctx.Races.ToList();
+                ships = ctx.Ships
+                     .ToList();
             }
-            return races.AsQueryable();
+            return ships.AsQueryable();
         }
-        public Races GetById(Guid id)
+        public Ships GetById(Guid id)
         {
-            Races race;
+            Ships ship;
             using (var ctx = new MyGameDBContext())
             {
-                race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                ship = ctx.Ships.FirstOrDefault(t => t.ShipId == id);
             }
-            return race;
+            return ship;
         }
-        public bool Delete(Races race)
+        public bool Delete(Ships ship)
         {
-            return Delete(race.RaceId);
+            return Delete(ship.ShipId);
         }
         public bool Delete(Guid id)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
-                if (race != null)
+                var ship = ctx.Ships.FirstOrDefault(t => t.ShipId == id);
+                if (ship != null)
                 {
-                    ctx.Races.Remove(race);
+                    ctx.Ships.Remove(ship);
                     ctx.SaveChanges();
                     return true;
                 }
                 return false;
             }
-
         }
-        public void Update(Races race)
+        public void Update(Ships ship)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                var item = ctx.Ships.FirstOrDefault(t => t.ShipId == ship.ShipId);
                 if (item != null)
                 {
-                    item.RaceName = race.RaceName;
+                    item.ShipName = ship.ShipName;
+                    ctx.SaveChanges();
                 }
             }
         }
-        public void Add(Races race)
+        public void Add(Ships ship)
         {
             try
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    ctx.Races.Add(race);
+                    ctx.Ships.Add(ship);
                     ctx.SaveChanges();
                 }
             }

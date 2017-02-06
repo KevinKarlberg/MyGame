@@ -50,7 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.Models\Buildings.cs" />
+    <Compile Include="DB.Models\SystemChat\Chat.cs" />
     <Compile Include="DB.Models\Location.cs" />
+    <Compile Include="DB.Models\Mailfunction\Mail.cs" />
+    <Compile Include="DB.Models\Mailfunction\PlayerMail.cs" />
+    <Compile Include="DB.Models\Market\Buying.cs" />
+    <Compile Include="DB.Models\Market\MarketContent.cs" />
+    <Compile Include="DB.Models\Market\PlayerMarket.cs" />
+    <Compile Include="DB.Models\Market\Selling.cs" />
     <Compile Include="DB.Models\Planets.cs" />
     <Compile Include="DB.Models\PlayerBuildings.cs" />
     <Compile Include="DB.Models\PlayerPlanets.cs" />
@@ -59,10 +66,13 @@
     <Compile Include="DB.Models\Players.cs" />
     <Compile Include="DB.Models\PlayerShips.cs" />
     <Compile Include="DB.Models\PlayerTroops.cs" />
+    <Compile Include="DB.Models\ProtectionLevel\PlayerProtectionLevel.cs" />
+    <Compile Include="DB.Models\ProtectionLevel\ProtectionLevel.cs" />
     <Compile Include="DB.Models\Races.cs" />
     <Compile Include="DB.Models\Research.cs" />
     <Compile Include="DB.Models\Resources.cs" />
     <Compile Include="DB.Models\Ships.cs" />
+    <Compile Include="DB.Models\SystemChat\Message.cs" />
     <Compile Include="DB.Models\Terrain.cs" />
     <Compile Include="DB.Models\Troops.cs" />
     <Compile Include="Migrations\201702050953036_SuccessQuestionMark.cs" />
@@ -77,6 +87,10 @@
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\RacesRepository.cs" />
+    <Compile Include="Repositories\ResearchRepository.cs" />
+    <Compile Include="Repositories\ResourcesRepsitory.cs" />
+    <Compile Include="Repositories\ShipsRepository.cs" />
+    <Compile Include="Repositories\TerrainRepository.cs" />
     <Compile Include="Repositories\TroopsRepository.cs" />
   </ItemGroup>
   <ItemGroup>

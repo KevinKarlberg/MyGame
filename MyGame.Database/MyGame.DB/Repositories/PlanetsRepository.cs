@@ -17,8 +17,6 @@ namespace MyGame.DB.Repositories
             using (var ctx = new MyGameDBContext())
             {
                 planets = ctx.Planets
-                     .Include(b => b.PlanetId)
-                     .Include(b => b.PlanetName)
                      .ToList();
             }
             return planets.AsQueryable();
@@ -28,11 +26,7 @@ namespace MyGame.DB.Repositories
             Planets planet;
             using (var ctx = new MyGameDBContext())
             {
-                planet = ctx.Planets.Where(b => b.PlanetId == id)
-                    .Include(p => p.PlanetId)
-                    .Include(p => p.PlanetName)
-                    .Include(p => p.Terrain)
-                    .FirstOrDefault();
+                planet = ctx.Planets.FirstOrDefault(p => p.PlanetId == id);
             }
             return planet;
         }
@@ -44,11 +38,7 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var planets = ctx.Planets.Where(p => p.PlanetId == id)
-                       .Include(p => p.PlanetId)
-                       .Include(b => b.PlanetName)
-                       .Include(b => b.Terrain)
-                       .FirstOrDefault();
+                var planets = ctx.Planets.FirstOrDefault(p => p.PlanetId == id);
                 if (planets != null)
                 {
                     ctx.Planets.Remove(planets);
@@ -69,6 +59,7 @@ namespace MyGame.DB.Repositories
                     item.PlanetName = planet.PlanetName;
                     item.TerrainRefId = planet.TerrainRefId;
                     item.Terrain = planet.Terrain;
+                    ctx.SaveChanges();
                 }
             }
         }

@@ -3,74 +3,74 @@ using MyGame.DB.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Data.Entity.Validation;
-using System.Data.Entity;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    public class RacesRepository : IRepository<Races>, IDisposable
+    public class ResearchRepository : IRepository<Troops>, IDisposable
     {
         public void Dispose()
         {
             // Dispose runs after Using
         }
-        public IQueryable<Races> GetAll()
+        public IQueryable<Research> GetAll()
         {
-            var races = new List<Races>();
+            var research = new List<Research>();
 
             using (var ctx = new MyGameDBContext())
             {
-                races = ctx.Races.ToList();
+                research = ctx.Research
+                     .ToList();
             }
-            return races.AsQueryable();
+            return research.AsQueryable();
         }
-        public Races GetById(Guid id)
+        public Research GetById(Guid id)
         {
-            Races race;
+            Research research;
             using (var ctx = new MyGameDBContext())
             {
-                race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                research = ctx.Research.FirstOrDefault(r => r.ResearchId == id);
             }
-            return race;
+            return research;
         }
-        public bool Delete(Races race)
+        public bool Delete(Research research)
         {
-            return Delete(race.RaceId);
+            return Delete(research.ResearchId);
         }
         public bool Delete(Guid id)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
-                if (race != null)
+                var research = ctx.Research.FirstOrDefault(t => t.ResearchId == id);
+                if (research != null)
                 {
-                    ctx.Races.Remove(race);
+                    ctx.Research.Remove(research);
                     ctx.SaveChanges();
                     return true;
                 }
                 return false;
             }
-
         }
-        public void Update(Races race)
+        public void Update(Research research)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                var item = ctx.Research.FirstOrDefault(t => t.ResearchId == research.ResearchId);
                 if (item != null)
                 {
-                    item.RaceName = race.RaceName;
+                    item.ResearchName = research.ResearchName;
+                    ctx.SaveChanges();
                 }
             }
         }
-        public void Add(Races race)
+        public void Add(Research research)
         {
             try
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    ctx.Races.Add(race);
+                    ctx.Research.Add(research);
                     ctx.SaveChanges();
                 }
             }

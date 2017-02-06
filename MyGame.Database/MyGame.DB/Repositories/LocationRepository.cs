@@ -8,8 +8,12 @@ using System.Data.Entity;
 
 namespace MyGame.DB.Repositories
 {
-    public class LocationRepository : IRepository<Location>
+    public class LocationRepository : IRepository<Location>, IDisposable
     {
+        public void Dispose()
+        {
+            // Dispose runs after Using
+        }
         public IQueryable<Location> GetAll()
         {
             var locations = new List<Location>();
@@ -17,9 +21,6 @@ namespace MyGame.DB.Repositories
             using (var ctx = new MyGameDBContext())
             {
                 locations = ctx.Locations
-                     .Include(l => l.GalaxyNumber)
-                     .Include(l => l.LocalCluster)
-                     .Include(l => l.SystemNumber)
                      .ToList();
             }
             return locations.AsQueryable();
@@ -29,11 +30,7 @@ namespace MyGame.DB.Repositories
             Location location;
             using (var ctx = new MyGameDBContext())
             {
-                location = ctx.Locations.Where(b => b.LocationId == id)
-                     .Include(l => l.GalaxyNumber)
-                     .Include(l => l.LocalCluster)
-                     .Include(l => l.SystemNumber)
-                    .FirstOrDefault();
+                location = ctx.Locations.FirstOrDefault(l => l.LocationId == id);
             }
             return location;
         }
@@ -45,11 +42,7 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var location = ctx.Locations.Where(b => b.LocationId == id)
-                       .Include(l => l.GalaxyNumber)
-                       .Include(l => l.LocalCluster)
-                       .Include(l => l.SystemNumber)
-                       .FirstOrDefault();
+                var location = ctx.Locations.FirstOrDefault(l => l.LocationId == id);
                 if (location != null)
                 {
                     ctx.Locations.Remove(location);
@@ -69,6 +62,7 @@ namespace MyGame.DB.Repositories
                     item.GalaxyNumber = location.GalaxyNumber;
                     item.LocalCluster = location.LocalCluster;
                     item.SystemNumber = location.SystemNumber;
+                    ctx.SaveChanges();
                 }
             }
         }

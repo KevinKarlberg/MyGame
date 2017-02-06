@@ -4,73 +4,75 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity.Validation;
 using System.Data.Entity;
+using MyGame.DB;
 
-namespace MyGame.DB.Repositories
+namespace MyGame.Database.Repositories
 {
-    public class RacesRepository : IRepository<Races>, IDisposable
+    public class TerrainRepository : IRepository<Troops>, IDisposable
     {
         public void Dispose()
         {
             // Dispose runs after Using
         }
-        public IQueryable<Races> GetAll()
+        public IQueryable<Terrain> GetAll()
         {
-            var races = new List<Races>();
+            var terrain = new List<Terrain>();
 
             using (var ctx = new MyGameDBContext())
             {
-                races = ctx.Races.ToList();
+                terrain = ctx.Terrain
+                     .ToList();
             }
-            return races.AsQueryable();
+            return terrain.AsQueryable();
         }
-        public Races GetById(Guid id)
+        public Terrain GetById(Guid id)
         {
-            Races race;
+            Terrain terrain;
             using (var ctx = new MyGameDBContext())
             {
-                race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                terrain = ctx.Terrain.FirstOrDefault(t => t.TerrainId == id);
             }
-            return race;
+            return terrain;
         }
-        public bool Delete(Races race)
+        public bool Delete(Terrain terrain)
         {
-            return Delete(race.RaceId);
+            return Delete(terrain.TerrainId);
         }
         public bool Delete(Guid id)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var race = ctx.Races.FirstOrDefault(r => r.RaceId == id);
-                if (race != null)
+                var terrain = ctx.Terrain.FirstOrDefault(t => t.TerrainId == id);
+                if (terrain != null)
                 {
-                    ctx.Races.Remove(race);
+                    ctx.Terrain.Remove(terrain);
                     ctx.SaveChanges();
                     return true;
                 }
                 return false;
             }
-
         }
-        public void Update(Races race)
+        public void Update(Terrain terrain)
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                var item = ctx.Terrain.FirstOrDefault(t => t.TerrainId == terrain.TerrainId);
                 if (item != null)
                 {
-                    item.RaceName = race.RaceName;
+                    item.TerrainType = terrain.TerrainType;
+                    item.TerrainDescription = terrain.TerrainDescription;
+                    ctx.SaveChanges();
                 }
             }
         }
-        public void Add(Races race)
+        public void Add(Terrain terrain)
         {
             try
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    ctx.Races.Add(race);
+                    ctx.Terrain.Add(terrain);
                     ctx.SaveChanges();
                 }
             }
