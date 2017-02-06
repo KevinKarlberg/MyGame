@@ -13,8 +13,11 @@ namespace MyGame.DB.DB.Models
         public Guid PlayerId { get; set; }
         [Key, Column(Order = 1)]
         public Guid BuildingId { get; set; }
+        [Key, Column(Order = 2)]
+        public Planets PlanetId { get; set; }
         [Required]
         public int Quantity { get; set; }
+        public virtual Planets Planet { get; set; }
         public virtual Buildings Building { get; set; }
         public virtual Players Player { get; set; }
     }
