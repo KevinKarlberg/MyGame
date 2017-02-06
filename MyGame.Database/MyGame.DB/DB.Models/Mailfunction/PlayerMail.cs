@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models.Mailfunction
 {
-    class PlayerMail
+   public class PlayerMail
     {
         [Key, Column(Order = 0)]
         public int SendingPlayerId { get; set; }

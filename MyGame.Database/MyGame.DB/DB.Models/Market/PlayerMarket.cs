@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models.Market
 {
-    class PlayerMarket
+   public class PlayerMarket
     {
         [Key, Column(Order = 0)]
         public int PlayerID { get; set; }

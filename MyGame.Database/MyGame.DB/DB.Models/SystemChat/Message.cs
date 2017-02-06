@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models.SystemChat
 {
-    class Message
+   public class Message
     {
         [Key]
         public int MessageId { get; set; }

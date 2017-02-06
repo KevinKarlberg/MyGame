@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models.ProtectionLevel
 {
-    class PlayerProtectionLevel
+   public class PlayerProtectionLevel
     {
         [Key, Column(Order = 0)]
         public int PlayerID { get; set; }
