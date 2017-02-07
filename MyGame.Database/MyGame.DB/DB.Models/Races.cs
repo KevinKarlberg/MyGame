@@ -13,5 +13,10 @@ namespace MyGame.DB.DB.Models
         [Required]
         [MaxLength(50)]
         public string RaceName { get; set; }
+        [Required]
+        [MaxLength(500)]
+        public string Description { get; set; }
+        [Required]
+        public string RacialTraits { get; set; }
     }
 }

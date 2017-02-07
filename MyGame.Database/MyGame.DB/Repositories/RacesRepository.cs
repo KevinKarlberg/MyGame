@@ -57,7 +57,7 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                var item = ctx.Races.FirstOrDefault(r => r.RaceId == id);
+                var item = ctx.Races.FirstOrDefault(r => r.RaceId == race.RaceId);
                 if (item != null)
                 {
                     item.RaceName = race.RaceName;

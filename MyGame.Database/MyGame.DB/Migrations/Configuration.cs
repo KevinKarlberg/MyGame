@@ -21,8 +21,12 @@ namespace MyGame.DB.Migrations
             #region Races
             List<Races> races = new List<Races>()
             {
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Humans"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Centians"}
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Raptors", Description=" A lizardlike species bent on universal domination. Raptors multiply like no other and usually overcome their opponents with sheer numbers. With frightening technology that is based on a mix of biology and machine they instil fear in their enemies", RacialTraits="+15% Population growth, -15% Ship construction cost/time"},
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Centians", Description=" Natural galactic leaders, respected and adored throughout the universe for their benevolent nature and kind guidance. But even kindness has it’s limits", RacialTraits="+10% Galaxy guarding forces, +3% generated resources for holding galactic center"},
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Mixxels", Description="Having entered stage three and harnessing the power of galaxies, they are able to slip in and out of this dimension, cloaking their movement and transgressing distances with incredible speed. Neither friendly nor ruthless they maintain their own independence from their galactic neighbours.", RacialTraits="+15% Attack speed,  Undetectable attacks"},
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Humans", Description="Having finally evolved past their own petty differences, humans took to the stars in an attempt to spread the teachings of lord hubbard throughout the galaxy, Clearly the craziest of all the species you never know what will happen whilst fighting a human", RacialTraits="3x the random factor in battle, -5% troop construction time"},
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Rogans", Description="The pinnacle of aggression. Rogans know nothing but war and thrive within in. It’s only during war times rogans find themselves being the best they can be, and as such it’s recommended to interact with them as little as possible",RacialTraits="+10% resource collection during war, -10% training/building cost and time during war"},
+                new Races() {RaceId = Guid.NewGuid(), RaceName = "Fenxians", Description="Traders, through and through. Making a deal with a fenxian is almost always going to be the most lucrative thing for you, but expect them to get an even better deal for themselves",RacialTraits="No fee on the marketplace, Double the amount of daily marketplace deals."}
             };
             foreach (var item in races)
             {
@@ -33,9 +37,18 @@ namespace MyGame.DB.Migrations
             #region Buildings
             List<Buildings> buildings = new List<Buildings>()
             {
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Residental"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Banks"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Barracks"}
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Residental",Description="Builds additional residential areas. Raises population and birthrates"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Banks",Description="Raises the daily income of credits"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Barracks",Description="Lowers the cost and time required to train groundtroops "},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Hangars",Description="Lowers the cost and time required to construct spaceships"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Universities",Description="Increases the efficiency of research"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Technological institutes",Description="Provides free daily points to invest in research"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Fort",Description="Decreases the training time required to train groundtroops and lowers the cost of defensive specialists"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Space Stations",Description="Increases the efficiency of your orbital defense"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Drills",Description="Produces oil"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Mines",Description="Produces Minerals"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Power Plants",Description="Produces electricity"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "War mongers guild",Description="Decreases the training cost and time to train offensive specialists"}
             };
             foreach (var item in buildings)
             {
@@ -55,7 +68,7 @@ namespace MyGame.DB.Migrations
                 context.Troops.AddOrUpdate(x => x.TroopID, item);
             }
             #endregion
-            // Populating the database with Locations
+            // Populating the database with Locationsq
             #region Location
             List<Location> locations = new List<Location>()
             {
@@ -72,8 +85,11 @@ namespace MyGame.DB.Migrations
             #region Terrains
             List<Terrain> terrain = new List<Terrain>()
             {
-                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Water", TerrainDescription="A planet with a lot of liquid water present"},
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Housing", TerrainDescription="A planet with an abundance of water, allowing for high population"},
                 new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Mineral", TerrainDescription="A planet with a lot of mineral deposits"},
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Oil", TerrainDescription="A planet with a long biological history, resulting in vast deposits of biofuel"},
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Nagrata", TerrainDescription="A planet that has existed almost since the formation of the universe, allowing for the mining of Nagrata"},
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Special Credits", TerrainDescription="A planet already inhabited by an ancient grounddwelling alien race, allowing you to trade with them for special credits"},
                 new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Gas", TerrainDescription="A planet abundant of natural gas"}
             };
             foreach (var item in terrain)

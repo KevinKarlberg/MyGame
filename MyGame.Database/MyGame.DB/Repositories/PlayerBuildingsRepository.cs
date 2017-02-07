@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerBuildingsRepository : IJuncRepository<List<PlayerBuildings>>, IDisposable
+   public class PlayerBuildingsRepository : IJuncRepository<List<PlayerBuildings>>, IDisposable
     {
         public void Dispose()
         {
@@ -140,6 +140,33 @@ namespace MyGame.DB.Repositories
             if (issues != "")
                 return false;
             return true;
+        }
+        public bool RemoveAllByPlayer(Players player)
+        {
+            string issues = "";
+
+            using (var ctx = new MyGameDBContext())
+            {
+                var list  = ctx.PlayerBuildings.Where(p => p.PlayerId == player.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    try
+                    {
+                        ctx.PlayerBuildings.Remove(list[i]);
+                    }
+                    catch (Exception)
+                    {
+
+                        issues += $"Issues with removing obj {i}";
+                    }
+                   
+                }
+            }
+            if (issues == "")
+                return false;
+            return true;
+
+    
         }
 
     }

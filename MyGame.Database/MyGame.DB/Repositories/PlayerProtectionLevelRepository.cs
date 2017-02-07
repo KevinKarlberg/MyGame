@@ -24,7 +24,7 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-                playerProtectionLevel = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerID == playerProtectionLevel.PlayerID);
+                playerProtectionLevel = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerId == playerProtectionLevel.PlayerId);
 
 
             }
@@ -44,7 +44,7 @@ namespace MyGame.DB.Repositories
             {
                 try
                 {
-                    currentProtectonLevel = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerID == currentProtectonLevel.PlayerID);
+                    currentProtectonLevel = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerId == currentProtectonLevel.PlayerId);
                     currentProtectonLevel.ProtectionLevelID = desiredProtectionLevel.ProtectionLevelID;
                     ctx.SaveChanges();
                 }
@@ -70,7 +70,7 @@ namespace MyGame.DB.Repositories
             string issues = "";
             using (var ctx = new MyGameDBContext())
             {
-                var obj = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerID == playerProtectionLevel.PlayerID);
+                var obj = ctx.PlayerProtectionLevel.FirstOrDefault(p => p.PlayerId == playerProtectionLevel.PlayerId);
 
                 if (obj == null)
                 {
@@ -107,6 +107,33 @@ namespace MyGame.DB.Repositories
 
 
 
+
+
+        }
+        public bool RemoveAllByPlayer(Players player)
+        {
+            string issues = "";
+
+            using (var ctx = new MyGameDBContext())
+            {
+                var list = ctx.PlayerProtectionLevel.Where(p => p.PlayerId == player.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    try
+                    {
+                        ctx.PlayerProtectionLevel.Remove(list[i]);
+                    }
+                    catch (Exception)
+                    {
+
+                        issues += $"Issues with removing obj {i}";
+                    }
+
+                }
+            }
+            if (issues == "")
+                return false;
+            return true;
 
 
         }

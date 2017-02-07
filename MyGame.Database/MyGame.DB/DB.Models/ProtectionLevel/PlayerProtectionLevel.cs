@@ -11,7 +11,7 @@ namespace MyGame.DB.DB.Models.ProtectionLevel
    public class PlayerProtectionLevel
     {
         [Key, Column(Order = 0)]
-        public int PlayerID { get; set; }
+        public Guid PlayerId { get; set; }
 
 
         [Key, Column(Order = 1)]

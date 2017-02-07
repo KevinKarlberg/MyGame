@@ -11,7 +11,12 @@ namespace MyGame.DB.DB.Models
         [Key]
         public Guid BuildingId { get; set; }
         [Required]
+        public int AcresRequired { get; set; }
+        [Required]
         [MaxLength(50)]
         public string BuildingName { get; set; }
+        [Required]
+        [MaxLength(500)]
+        public string Description { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using MyGame.DB;
 
 namespace MyGame.Database.Repositories
 {
-    public class TerrainRepository : IRepository<Troops>, IDisposable
+    public class TerrainRepository : IRepository<Terrain>, IDisposable
     {
         public void Dispose()
         {

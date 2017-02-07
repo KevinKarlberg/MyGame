@@ -11,7 +11,7 @@ namespace MyGame.DB.DB.Models.Market
    public class PlayerMarket
     {
         [Key, Column(Order = 0)]
-        public Guid PlayerID { get; set; }
+        public Guid PlayerId { get; set; }
 
         [Key, Column(Order = 1)]
         public Guid SellingID { get; set; }

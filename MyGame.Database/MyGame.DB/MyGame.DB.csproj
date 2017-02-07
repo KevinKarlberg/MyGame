@@ -97,6 +97,7 @@
     <Compile Include="Repositories\PlayerMarketRepository.cs" />
     <Compile Include="Repositories\PlayerPlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerProtectionLevelRepository.cs" />
+    <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\PlayerResearchRepository.cs" />
     <Compile Include="Repositories\PlayerResourcesRepository.cs" />
     <Compile Include="Repositories\PlayerShipsRepository.cs" />

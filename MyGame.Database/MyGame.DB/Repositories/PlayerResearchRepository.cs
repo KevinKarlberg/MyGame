@@ -141,6 +141,38 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
+        /// <summary>
+        /// Removes all ships by playerId
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public bool RemoveAllByPlayer(Players player)
+        {
+            string issues = "";
+
+            using (var ctx = new MyGameDBContext())
+            {
+                var list = ctx.PlayerResearch.Where(p => p.PlayerId == player.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    try
+                    {
+                        ctx.PlayerResearch.Remove(list[i]);
+                    }
+                    catch (Exception)
+                    {
+
+                        issues += $"Issues with removing obj {i}";
+                    }
+
+                }
+            }
+            if (issues == "")
+                return false;
+            return true;
+
+
+        }
     }
 }
 

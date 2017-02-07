@@ -124,6 +124,33 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
+        public bool RemoveAllByPlayer(Players player)
+        {
+            string issues = "";
+
+            using (var ctx = new MyGameDBContext())
+            {
+                var list = ctx.PlayerPlanets.Where(p => p.PlayerId == player.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    try
+                    {
+                        ctx.PlayerPlanets.Remove(list[i]);
+                    }
+                    catch (Exception)
+                    {
+
+                        issues += $"Issues with removing obj {i}";
+                    }
+
+                }
+            }
+            if (issues == "")
+                return false;
+            return true;
+
+
+        }
 
     }
 }

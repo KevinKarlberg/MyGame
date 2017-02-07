@@ -11,7 +11,7 @@ namespace MyGame.DB.DB.Models.SystemChat
    public class Message
     {
         [Key]
-        public int MessageId { get; set; }
+        public Guid MessageId { get; set; }
         [Required]
         [MaxLength(1000)]
         public string Body { get; set; }
