@@ -11,13 +11,13 @@ namespace MyGame.DB.DB.Models.Mailfunction
    public class PlayerMail
     {
         [Key, Column(Order = 0)]
-        public int SendingPlayerId { get; set; }
+        public Guid SendingPlayerId { get; set; }
 
         [Key, Column(Order = 1)]
-        public int RecievingPlayerId { get; set; }
+        public Guid RecievingPlayerId { get; set; }
 
         [Key, Column(Order = 2)]
-        public int MailID { get; set; }
+        public Guid MailID { get; set; }
 
 
         public virtual Players Sender { get; set; }

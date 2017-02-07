@@ -10,7 +10,7 @@ namespace MyGame.DB.DB.Models.Mailfunction
     public class Mail
     {
         [Key]
-        public int MailID { get; set; }
+        public Guid MailID { get; set; }
         [Required]
         [MaxLength(500)]
         public string MailContentMessage { get; set; }
