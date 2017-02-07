@@ -40,7 +40,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.PlayerId == playerBuildings[i].PlayerId && p.BuildingId == playerBuildings[i].BuildingId);
+                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.PlayerId == playerBuildings[i].PlayerId && p.BuildingId == playerBuildings[i].BuildingId && p.PlanetId == playerBuildings[i].PlanetId);
                     if (obj != null)
                     {
                         if (obj.Quantity > playerBuildings[i].Quantity)
@@ -89,7 +89,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.BuildingId == playerBuildings[i].BuildingId && p.PlanetId == playerBuildings[i].PlanetId);
+                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.BuildingId == playerBuildings[i].BuildingId && p.PlanetId == playerBuildings[i].PlanetId && p.PlayerId == playerBuildings[i].PlayerId);
 
                     if (obj == null)
                     {

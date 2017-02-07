@@ -41,7 +41,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.PlayerId == playerTroops[i].PlayerId && p.TroopId == playerTroops[i].TroopId);
+                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.PlayerId == playerTroops[i].PlayerId && p.TroopId == playerTroops[i].TroopId && p.PlayerId == playerTroops[i].PlayerId);
 
                     if (obj != null)
                     {
@@ -92,7 +92,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.TroopId == playerTroops[i].TroopId && p.LocationId == playerTroops[i].LocationId);
+                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.TroopId == playerTroops[i].TroopId && p.LocationId == playerTroops[i].LocationId && p.PlayerId == playerTroops[i].PlayerId);
 
                     if (obj == null)
                     {

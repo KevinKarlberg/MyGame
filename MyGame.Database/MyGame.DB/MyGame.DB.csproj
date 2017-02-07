@@ -88,6 +88,7 @@
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
+    <Compile Include="Repositories\PlayerPlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerResearchRepository.cs" />
     <Compile Include="Repositories\PlayerShipsRepository.cs" />
     <Compile Include="Repositories\PlayerTroopsRepository.cs" />

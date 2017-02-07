@@ -14,7 +14,7 @@ namespace MyGame.DB.DB.Models
         [Key, Column(Order = 1)]
         public Guid BuildingId { get; set; }
         [Key, Column(Order = 2)]
-        public Planets PlanetId { get; set; }
+        public Guid PlanetId { get; set; }
         [Required]
         public int Quantity { get; set; }
         public virtual Planets Planet { get; set; }

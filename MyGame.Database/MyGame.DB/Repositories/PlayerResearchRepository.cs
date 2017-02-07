@@ -10,6 +10,10 @@ namespace MyGame.DB.Repositories
 {
     class PlayerResearchRepository : IJuncRepository<List<PlayerResearch>>, IDisposable
     {
+        public void Dispose()
+        {
+            
+        }
         public IQueryable<PlayerResearch> GetAllByPlayerAndResearch(PlayerResearch playerResearch)
         {
             var playerResearches = new List<PlayerResearch>();
@@ -36,7 +40,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.PlayerId == playerResearches[i].PlayerId && p.BuildingId == playerResearches[i].BuildingId);
+                    var obj = ctx.PlayerResearch.FirstOrDefault(p => p.PlayerId == playerResearches[i].PlayerId && p.ResearchId == playerResearches[i].ResearchId);
                     if (obj != null)
                     {
                         if (obj.Quantity > playerResearches[i].Quantity)
@@ -56,7 +60,7 @@ namespace MyGame.DB.Repositories
                         {
                             try
                             {
-                                ctx.PlayerBuildings.Remove(obj);
+                                ctx.PlayerResearch.Remove(obj);
                                 ctx.SaveChanges();
                             }
                             catch
@@ -78,20 +82,20 @@ namespace MyGame.DB.Repositories
         }
 
 
-        public bool AddOrUpdate(List<PlayerBuildings> playerBuildings)
+        public bool AddOrUpdate(List<PlayerResearch> playerResearches)
         {
             string issues = "";
-            for (int i = 0; i < playerBuildings.Count; i++)
+            for (int i = 0; i < playerResearches.Count; i++)
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerBuildings.FirstOrDefault(p => p.BuildingId == playerBuildings[i].BuildingId && p.PlanetId == playerBuildings[i].PlanetId);
+                    var obj = ctx.PlayerResearch.FirstOrDefault(p => p.PlayerId == playerResearches[i].PlayerId && p.ResearchId == playerResearches[i].ResearchId);
 
                     if (obj == null)
                     {
                         try
                         {
-                            ctx.PlayerBuildings.Add(playerBuildings[i]);
+                            ctx.PlayerResearch.Add(playerResearches[i]);
                             ctx.SaveChanges();
 
                         }
@@ -105,7 +109,7 @@ namespace MyGame.DB.Repositories
                     {
                         try
                         {
-                            obj.Quantity = obj.Quantity + playerBuildings[i].Quantity;
+                            obj.Quantity = obj.Quantity + playerResearches[i].Quantity;
                             ctx.SaveChanges();
                         }
                         catch
@@ -122,7 +126,6 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
-
     }
 }
 

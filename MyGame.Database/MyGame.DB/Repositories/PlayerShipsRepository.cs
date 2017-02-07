@@ -41,7 +41,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId);
+                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId && p.PlayerId == playerships[i].PlayerId);
 
                     if (obj.Quantity > playerships[i].Quantity)
                     {
@@ -86,7 +86,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId);
+                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId && p.PlayerId == playerships[i].PlayerId);
 
                     if (obj != null)
                     {
