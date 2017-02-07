@@ -96,10 +96,12 @@
     <Compile Include="Repositories\PlayerMailRepository.cs" />
     <Compile Include="Repositories\PlayerMarketRepository.cs" />
     <Compile Include="Repositories\PlayerPlanetsRepository.cs" />
+    <Compile Include="Repositories\PlayerProtectionLevelRepository.cs" />
     <Compile Include="Repositories\PlayerResearchRepository.cs" />
     <Compile Include="Repositories\PlayerResourcesRepository.cs" />
     <Compile Include="Repositories\PlayerShipsRepository.cs" />
     <Compile Include="Repositories\PlayerTroopsRepository.cs" />
+    <Compile Include="Repositories\ProtectionLevelRepository.cs" />
     <Compile Include="Repositories\RacesRepository.cs" />
     <Compile Include="Repositories\ResearchRepository.cs" />
     <Compile Include="Repositories\ResourcesRepsitory.cs" />

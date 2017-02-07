@@ -1,5 +1,5 @@
 ﻿using MyGame.DB.DB.Models;
-using MyGame.DB.DB.Models.TheProtectionLevels;
+using MyGame.DB.DB.Models.ProtectionLevel;
 using MyGame.DB.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace MyGame.DB.Repositories
 
         }
         /// <summary>
-        /// Fetches a Selling based on a Selling ID
+        /// Fetches a ProtectionLevel based on a Selling ID
         /// </summary>
         /// <param name="protectionLevel"></param>
         /// <returns></returns>
@@ -24,29 +24,37 @@ namespace MyGame.DB.Repositories
         {
             using (var ctx = new MyGameDBContext())
             {
-
-                protectionLevel = ctx.ProtectionLevel.FirstOrDefault(p => p.ProtectionLevelId == protectionLevel.ProtectionLevelId);
+                protectionLevel = ctx.ProtectionLevel.FirstOrDefault(p => p.ProtectionLevelID == protectionLevel.ProtectionLevelID);
             }
             return protectionLevel;
         }
         /// <summary>
-        /// Removes a selling by an ID and returns true or false based on the success of the action. Also removes the marketcontent attached to the buying
+        /// Fetches all the protectionlevels there are
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<ProtectionLevel> GetAll()
+        {
+            var list = new List<ProtectionLevel>();
+            using (var ctx = new MyGameDBContext())
+            {
+                list = ctx.ProtectionLevel.ToList();
+            }
+            return list.AsQueryable();
+        }
+        /// <summary>
+        /// Removes a protectionlevel by ID and returns true or false based on the success of the action
         /// </summary>
         /// <param name="playerBuildings"></param>
         /// <returns></returns>
-        public bool Remove(Selling selling)
+        public bool Remove(ProtectionLevel protectionLevel)
         {
             string issues = "";
             using (var ctx = new MyGameDBContext())
             {
-                selling = ctx.Selling.FirstOrDefault(m => m.SellingID == selling.SellingID);
+                protectionLevel = ctx.ProtectionLevel.FirstOrDefault(p => p.ProtectionLevelID == protectionLevel.ProtectionLevelID);
                 try
                 {
-                    MarketContent marketContent = new MarketContent();
-                    marketContent.MarketContentID = selling.SellingMarketContentRefId;
-                    using (var repo = new MarketContentRepository())
-                        repo.Remove(marketContent);
-                    ctx.Selling.Remove(selling);
+                    ctx.ProtectionLevel.Remove(protectionLevel);
                     ctx.SaveChanges();
                 }
                 catch
@@ -61,11 +69,11 @@ namespace MyGame.DB.Repositories
 
 
         /// <summary>
-        /// Adds a selling by an ID and returns true or false based on the success of the action
+        /// Adds a ProtectionLevel by an ID and returns true or false based on the success of the action
         /// </summary>
         /// <param name="playerBuildings"></param>
         /// <returns></returns>
-        public bool Add(Selling selling)
+        public bool Add(ProtectionLevel protectionLevel)
         {
             string issues = "";
             using (var ctx = new MyGameDBContext())
@@ -73,7 +81,7 @@ namespace MyGame.DB.Repositories
                 try
                 {
 
-                    ctx.Selling.Add(selling);
+                    ctx.ProtectionLevel.Add(protectionLevel);
                     ctx.SaveChanges();
                 }
                 catch
