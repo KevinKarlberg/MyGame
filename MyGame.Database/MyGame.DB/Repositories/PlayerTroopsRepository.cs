@@ -14,7 +14,11 @@ namespace MyGame.DB.Repositories
         {
 
         }
-
+        /// <summary>
+        /// Fetches a list of all the troops a certain player has on a certain location, if location ID is not provided it fetches all the troops a player has in total
+        /// </summary>
+        /// <param name="playerTroop"></param>
+        /// <returns></returns>
         public IQueryable<PlayerTroops> GetAllByPlayerAndOrLocation(PlayerTroops playerTroop)
         {
             var playerTroops = new List<PlayerTroops>();
@@ -34,6 +38,11 @@ namespace MyGame.DB.Repositories
             }
             return playerTroops.AsQueryable();
         }
+        /// <summary>
+        /// Removes a certain quantity of troops a player owns. If the quantity removed is greater than the quantity in total the troop is removed completely
+        /// </summary>
+        /// <param name="playerTroops"></param>
+        /// <returns></returns>
         public bool RemoveOrUpdate(List<PlayerTroops> playerTroops)
         {
             string issues = "";
@@ -84,7 +93,11 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
-
+        /// <summary>
+        /// Adds a certain troop to PlayerTroops list, if the troop already exists, it adds the quantity provided ontop of the existing quantity
+        /// </summary>
+        /// <param name="playerTroops"></param>
+        /// <returns></returns>
         public bool AddOrUpdate(List<PlayerTroops> playerTroops)
         {
             string issues = "";

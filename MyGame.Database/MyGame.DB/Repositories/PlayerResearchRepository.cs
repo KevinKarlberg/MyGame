@@ -14,6 +14,11 @@ namespace MyGame.DB.Repositories
         {
             
         }
+        /// <summary>
+        /// Fetches the quantity of a specific research the player has. If research is left empty, it fetches all the researches a player has
+        /// </summary>
+        /// <param name="playerResearch"></param>
+        /// <returns></returns>
         public IQueryable<PlayerResearch> GetAllByPlayerAndResearch(PlayerResearch playerResearch)
         {
             var playerResearches = new List<PlayerResearch>();
@@ -33,6 +38,12 @@ namespace MyGame.DB.Repositories
             }
             return playerResearches.AsQueryable();
         }
+
+        /// <summary>
+        ///  Removes a certain quantity of research a player owns. If the quantity removed is greater than the quantity in total the research is removed completely
+        /// </summary>
+        /// <param name="playerResearches"></param>
+        /// <returns></returns>
         public bool RemoveOrUpdate(List<PlayerResearch> playerResearches)
         {
             string issues = "";
@@ -81,7 +92,11 @@ namespace MyGame.DB.Repositories
             return true;
         }
 
-
+        /// <summary>
+        /// Adds a certain research to PlayerResearch list, if the research already exists, it adds the quantity provided ontop of the existing quantity
+        /// </summary>
+        /// <param name="playerResearches"></param>
+        /// <returns></returns>
         public bool AddOrUpdate(List<PlayerResearch> playerResearches)
         {
             string issues = "";

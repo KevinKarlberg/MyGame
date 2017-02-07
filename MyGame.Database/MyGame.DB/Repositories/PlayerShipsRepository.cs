@@ -15,6 +15,11 @@ namespace MyGame.DB.Repositories
 
         }
 
+        /// <summary>
+        /// Gets all ships a player has at a certain location. If the location is left empty it gets all the ships a player has in all locations combined
+        /// </summary>
+        /// <param name="playership"></param>
+        /// <returns></returns>
         public IQueryable<PlayerShips> GetAllByPlayerAndOrLocation(PlayerShips playership)
         {
             var playerShips = new List<PlayerShips>();
@@ -34,6 +39,11 @@ namespace MyGame.DB.Repositories
             }
             return playerShips.AsQueryable();
         }
+        /// <summary>
+        /// Removes a certain quantity of ships a player owns. If the quantity removed is greater than the quantity in total the ship is removed completely
+        /// </summary>
+        /// <param name="playerships"></param>
+        /// <returns></returns>
         public bool RemoveOrUpdate(List<PlayerShips> playerships)
         {
             string issues = "";
@@ -77,7 +87,11 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
-       
+        /// <summary>
+        /// Adds a certain ship to PlayerShips list, if the ship already exists, it adds the quantity provided ontop of the existing quantity
+        /// </summary>
+        /// <param name="playerships"></param>
+        /// <returns></returns>
 
         public bool AddOrUpdate(List<PlayerShips> playerships)
         {

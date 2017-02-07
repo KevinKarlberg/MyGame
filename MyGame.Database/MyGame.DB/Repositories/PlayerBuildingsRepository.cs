@@ -14,6 +14,11 @@ namespace MyGame.DB.Repositories
         {
 
         }
+        /// <summary>
+        /// Fetches a list of all the buildings a certain player has on a certain planet, if planet ID is not provided it fetches all the buildings a player has in total
+        /// </summary>
+        /// <param name="playerBuilding"></param>
+        /// <returns></returns>
         public IQueryable<PlayerBuildings> GetAllByPlayerAndPlanet(PlayerBuildings playerBuilding)
         {
             var playerBuildings = new List<PlayerBuildings>();
@@ -33,6 +38,11 @@ namespace MyGame.DB.Repositories
             }
             return playerBuildings.AsQueryable();
         }
+        /// <summary>
+        /// Removes a certain quantity of buildings a player owns. If the quantity removed is greater than the quantity in total the building is removed completely
+        /// </summary>
+        /// <param name="playerBuildings"></param>
+        /// <returns></returns>
         public bool RemoveOrUpdate(List<PlayerBuildings> playerBuildings)
         {
             string issues = "";
@@ -82,6 +92,11 @@ namespace MyGame.DB.Repositories
         }
 
 
+        /// <summary>
+        /// Adds a certain building to PlayerBuildings list, if the building already exists, it adds the quantity provided ontop of the existing quantity
+        /// </summary>
+        /// <param name="playerBuildings"></param>
+        /// <returns></returns>
         public bool AddOrUpdate(List<PlayerBuildings> playerBuildings)
         {
             string issues = "";
