@@ -90,6 +90,7 @@
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
     <Compile Include="Repositories\PlayerPlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerResearchRepository.cs" />
+    <Compile Include="Repositories\PlayerResourcesRepository.cs" />
     <Compile Include="Repositories\PlayerShipsRepository.cs" />
     <Compile Include="Repositories\PlayerTroopsRepository.cs" />
     <Compile Include="Repositories\RacesRepository.cs" />
