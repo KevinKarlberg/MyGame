@@ -9,13 +9,13 @@ using MyGame.DB;
 
 namespace MyGame.Database.Repositories
 {
-    public class TerrainRepository : IRepository<Terrain>, IDisposable
+    public class TerrainRepository : IDisposable
     {
         public void Dispose()
         {
             // Dispose runs after Using
         }
-        public IQueryable<Terrain> GetAll()
+        public List<Terrain> GetAll()
         {
             var terrain = new List<Terrain>();
 
@@ -24,7 +24,7 @@ namespace MyGame.Database.Repositories
                 terrain = ctx.Terrain
                      .ToList();
             }
-            return terrain.AsQueryable();
+            return terrain;
         }
         public Terrain GetById(Guid id)
         {
@@ -80,6 +80,15 @@ namespace MyGame.Database.Repositories
             {
 
             }
+        }
+        public Guid GetGuidByTerrainType(string terrainName)
+        {
+            var terrain = new Terrain();
+            using (var ctx = new MyGameDBContext())
+            {
+                terrain = ctx.Terrain.FirstOrDefault(t => t.TerrainType == terrainName);
+            }
+            return terrain.TerrainId;
         }
     }
 }

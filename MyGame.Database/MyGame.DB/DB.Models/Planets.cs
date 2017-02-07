@@ -14,6 +14,8 @@ namespace MyGame.DB.DB.Models
         [Required]
         [MaxLength(50)]
         public string PlanetName { get; set; }
+        [Required]
+        public int Size { get; set; }
         public Guid TerrainRefId { get; set; }
         [ForeignKey("TerrainRefId")]
         public virtual Terrain Terrain { get; set; }

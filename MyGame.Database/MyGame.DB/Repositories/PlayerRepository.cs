@@ -13,6 +13,12 @@ namespace MyGame.DB.Repositories
         {
             
         }
+
+        /// <summary>
+        /// Removes a player and everything related to the player via PlayerId
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public bool RemoveAPlayer(Players player)
         {
             string issues = "";
@@ -26,37 +32,115 @@ namespace MyGame.DB.Repositories
                     {
                         using (var repo = new PlayerBuildingsRepository())
                         {
-                            repo.RemoveAllByPlayer(player); 
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerBuildingsRepo ";
+                                
+                            }
+                           
                         }
                         using (var repo = new PlayerTroopsRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerTroopsRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerResourcesRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerResourcesRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerShipsRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerShipsRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerResearchRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerResearchRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerMarketRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerMarketRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerPlanetsRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerPlanetsRepo ";
+
+                            }
                         }
                         using (var repo = new PlayerProtectionLevelRepository())
                         {
-                            repo.RemoveAllByPlayer(player);
+                            try
+                            {
+                                repo.RemoveAllByPlayer(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerProtectionLevelRepo ";
+
+                            }
+                        }
+                        using (var repo = new PlayerMailRepository())
+                        {
+                            try
+                            {
+                                repo.RemoveAllMails(player);
+                            }
+                            catch (Exception)
+                            {
+                                issues += "Something went wrong in the PlayerMailRepo ";
+
+                            }
                         }
                     }
+                    ctx.Players.Remove(player);
                     ctx.SaveChanges();
                 }
                 catch (Exception)

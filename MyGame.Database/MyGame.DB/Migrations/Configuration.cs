@@ -90,7 +90,9 @@ namespace MyGame.DB.Migrations
                 new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Oil", TerrainDescription="A planet with a long biological history, resulting in vast deposits of biofuel"},
                 new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Nagrata", TerrainDescription="A planet that has existed almost since the formation of the universe, allowing for the mining of Nagrata"},
                 new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Special Credits", TerrainDescription="A planet already inhabited by an ancient grounddwelling alien race, allowing you to trade with them for special credits"},
-                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Gas", TerrainDescription="A planet abundant of natural gas"}
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Gas", TerrainDescription="A planet abundant of natural gas"},
+                new Terrain() {TerrainId = Guid.NewGuid(), TerrainType = "Starter", TerrainDescription="A good starting planet, a bit of everything"},
+
             };
             foreach (var item in terrain)
             {

@@ -53,12 +53,12 @@ namespace MyGame.DB.Repositories
         /// </summary>
         /// <param name="playerBuildings"></param>
         /// <returns></returns>
-        public bool RemoveAllMails(PlayerMail playerMail)
+        public bool RemoveAllMails(Players player)
         {
                 string issues = "";
                 using (var ctx = new MyGameDBContext())
                 {
-                var obj = ctx.PlayerMail.Where(p => p.RecievingPlayerId == playerMail.RecievingPlayerId)
+                var obj = ctx.PlayerMail.Where(p => p.RecievingPlayerId == player.PlayerId)
                 .ToList();
 
                 for (int i = 0; i < obj.Count; i++)
