@@ -93,6 +93,28 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
+        public bool Update(PlayerProtectionLevel playerProtectionLevel)
+        {
+            string issues = "";
+            using (var ctx = new MyGameDBContext())
+            {
+                try
+                {
+                    var temp = ctx.PlayerProtectionLevel.FirstOrDefault(m => m.PlayerID == playerProtectionLevel.PlayerID);
+                    temp.ProtectionLevel = playerProtectionLevel.ProtectionLevel;
+                    ctx.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    issues += "Problem finding or updating protectionlevel";
+                }
+                
+            }
+            if (issues != "")
+                return false;
+            return true;
+        }
 
     }
 }
