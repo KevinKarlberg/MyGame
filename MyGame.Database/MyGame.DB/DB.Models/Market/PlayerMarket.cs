@@ -15,16 +15,13 @@ namespace MyGame.DB.DB.Models.Market
 
 
         [Key, Column(Order = 1)]
-        public int SellingID { get; set; }
+        public Guid SellingID { get; set; }
 
         [Key, Column(Order = 2)]
-        public int BuyingID { get; set; }
-
-
-
-
+        public Guid BuyingID { get; set; }
         public virtual Players Player { get; set; }
-        public virtual Buying Deal { get; set; }
+        public virtual Buying Buyer { get; set; }
+        public virtual Selling Seller { get; set; }
         [Required]
         public DateTime Made { get; set; }
         [Required]
