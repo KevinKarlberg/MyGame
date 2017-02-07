@@ -99,7 +99,7 @@ namespace MyGame.DB.Repositories
                 }
                 catch
                 {
-                    issues += $"Issues with object {i}. ";
+                    issues += $"Issues with adding object. ";
                 }
             }
 

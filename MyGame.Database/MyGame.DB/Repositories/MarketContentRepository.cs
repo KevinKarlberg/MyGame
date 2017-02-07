@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class MarketRepository
+    class MarketContentRepository
     {
     }
 }

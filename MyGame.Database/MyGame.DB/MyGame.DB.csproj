@@ -88,7 +88,7 @@
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\MailRepository.cs" />
-    <Compile Include="Repositories\MarketRepository.cs" />
+    <Compile Include="Repositories\MarketContentRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
     <Compile Include="Repositories\PlayerMailRepository.cs" />
