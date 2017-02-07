@@ -25,7 +25,7 @@ namespace MyGame.DB.Repositories
             var auctions = new List<PlayerMarket>();
             using (var ctx = new MyGameDBContext())
             {
-                auctions = ctx.PlayerMarket.Where(p => p.PlayerID == playerMarket.PlayerID)
+                auctions = ctx.PlayerMarket.Where(p => p.PlayerId == playerMarket.PlayerId)
                 .ToList();
             }
 
@@ -44,7 +44,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerMarket.FirstOrDefault(p => p.PlayerID == auctions[i].PlayerID);
+                    var obj = ctx.PlayerMarket.FirstOrDefault(p => p.PlayerId == auctions[i].PlayerId);
 
                     if (obj != null)
                     {
@@ -88,7 +88,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerMarket.FirstOrDefault(p => p.PlayerID == auctions[i].PlayerID);
+                    var obj = ctx.PlayerMarket.FirstOrDefault(p => p.PlayerId == auctions[i].PlayerId);
                         try
                         {
                             ctx.PlayerMarket.Add(auctions[i]);

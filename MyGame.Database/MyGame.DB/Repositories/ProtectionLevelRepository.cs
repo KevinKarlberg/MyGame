@@ -100,7 +100,7 @@ namespace MyGame.DB.Repositories
             {
                 try
                 {
-                    var temp = ctx.PlayerProtectionLevel.FirstOrDefault(m => m.PlayerID == playerProtectionLevel.PlayerID);
+                    var temp = ctx.PlayerProtectionLevel.FirstOrDefault(m => m.PlayerId == playerProtectionLevel.PlayerId);
                     temp.ProtectionLevel = playerProtectionLevel.ProtectionLevel;
                     ctx.SaveChanges();
                 }
