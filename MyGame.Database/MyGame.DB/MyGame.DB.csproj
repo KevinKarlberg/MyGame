@@ -83,13 +83,16 @@
     <Compile Include="MyGameDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BuildingsRepository.cs" />
+    <Compile Include="Repositories\BuyingRepository.cs" />
     <Compile Include="Repositories\Interfaces\IJuncRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\MailRepository.cs" />
+    <Compile Include="Repositories\MarketRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
     <Compile Include="Repositories\PlayerMailRepository.cs" />
+    <Compile Include="Repositories\PlayerMarketRepository.cs" />
     <Compile Include="Repositories\PlayerPlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerResearchRepository.cs" />
     <Compile Include="Repositories\PlayerResourcesRepository.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Repositories\RacesRepository.cs" />
     <Compile Include="Repositories\ResearchRepository.cs" />
     <Compile Include="Repositories\ResourcesRepsitory.cs" />
+    <Compile Include="Repositories\SellingRepository.cs" />
     <Compile Include="Repositories\ShipsRepository.cs" />
     <Compile Include="Repositories\TerrainRepository.cs" />
     <Compile Include="Repositories\TroopsRepository.cs" />
