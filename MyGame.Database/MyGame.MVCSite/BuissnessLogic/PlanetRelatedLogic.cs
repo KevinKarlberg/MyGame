@@ -22,7 +22,10 @@ namespace MyGame.MVCSite.BuissnessLogic
             {
                 planet.TerrainRefId = repo.GetGuidByTerrainType("Starter");
             }
-            planet.Size = 3500;
+            planet.CurrentSize = 3500;
+            planet.MaxSize = 3500;
+            planet.Free = 300;
+            planet.Occupied = 200;
 
             return planet;
 
@@ -49,7 +52,12 @@ namespace MyGame.MVCSite.BuissnessLogic
                 }
 
             }
-            planet.Size = rnd.Next(2000,5001);
+            int maxsize = rnd.Next(2000, 5001);
+            int currentsize = 500 + (rnd.Next(0, 11) * 50)
+            planet.MaxSize = maxsize;
+            planet.CurrentSize = currentsize;
+            planet.Free = currentsize;
+            planet.Occupied = 0;
             return planet;
         }
         /// <summary>

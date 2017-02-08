@@ -13,11 +13,6 @@ namespace MyGame.DB.DB.Models
         public Guid PlayerId { get; set; }
         [Key, Column(Order = 1)]
         public Guid PlanetId { get; set; }
-        [Required]
-        public int CurrentSize { get; set; }
-        [Required]
-        public int MaxSize { get; set; }
-
         public virtual Players Player { get; set; }
         public virtual Planets Planet { get; set; }
     }

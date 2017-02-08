@@ -15,10 +15,6 @@ namespace MyGame.MVCSite.Controllers
             
             using(var rep = new BuildingsRepository())
             {
-                Buildings building = new Buildings();
-                building.BuildingId = Guid.Parse("4ec4951e-92bc-4eed-9c5d-f6a6485bd46a");
-                building.BuildingName = "Ship Bay";
-                rep.Update(building);
                 var TEST = rep.GetAll();
             }
             return View();

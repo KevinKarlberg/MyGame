@@ -155,5 +155,25 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
+        public bool AddPlayer(Players player)
+        {
+            string issues = "";
+
+            using (var ctx = new MyGameDBContext())
+            {
+                var item = ctx.Players.FirstOrDefault(p => p.PlayerId == player.PlayerId);
+                if (item == null)
+                {
+                    ctx.Players.Add(player);
+                    ctx.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    issues += "Player ID not unique, could not create new player";
+                    return false;
+                }
+            }
+        }
     }
 }

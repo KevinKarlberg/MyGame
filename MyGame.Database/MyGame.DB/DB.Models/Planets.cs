@@ -15,7 +15,13 @@ namespace MyGame.DB.DB.Models
         [MaxLength(50)]
         public string PlanetName { get; set; }
         [Required]
-        public int Size { get; set; }
+        public int CurrentSize { get; set; }
+        [Required]
+        public int MaxSize { get; set; }
+        [Required]
+        public int Free { get; set; }
+        [Required]
+        public int Occupied { get; set; }
         public Guid TerrainRefId { get; set; }
         [ForeignKey("TerrainRefId")]
         public virtual Terrain Terrain { get; set; }

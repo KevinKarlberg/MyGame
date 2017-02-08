@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace MyGame.DB.Repositories
 {
-    public class PlanetsRepository : IRepository<Planets>
+    public class PlanetsRepository : IRepository<Planets>, IDisposable
     {
         public IQueryable<Planets> GetAll()
         {
@@ -77,6 +77,11 @@ namespace MyGame.DB.Repositories
             {
 
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

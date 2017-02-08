@@ -9,9 +9,9 @@ using System.Data.Entity;
 
 namespace MyGame.DB.Repositories
 {
-    public class BuildingsRepository : IRepository<Buildings>,IDisposable
+    public class BuildingsRepository :IDisposable
     {
-        public IQueryable<Buildings> GetAll()
+        public List<Buildings> GetAll()
         {
             var buildings = new List<Buildings>();
 

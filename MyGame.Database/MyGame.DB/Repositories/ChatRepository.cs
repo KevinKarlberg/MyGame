@@ -20,7 +20,8 @@ namespace MyGame.DB.Repositories
             using (var ctx = new MyGameDBContext())
             {
                 chat = ctx.Chat.FirstOrDefault(c => c.LocationRefId == chat.LocationRefId);
-
+                if (chat == null)
+                    issues += "Could not find chat";
             }
             return chat;
         }
