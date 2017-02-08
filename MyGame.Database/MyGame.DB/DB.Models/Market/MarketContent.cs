@@ -12,6 +12,9 @@ namespace MyGame.DB.DB.Models.Market
     {
         [Key, Column(Order = 0)]
         public Guid MarketContentID { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string MarketContentTarget { get; set; }
         public int? Oil { get; set; }
         public int? Minerals { get; set; }
         public int? Credits { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerResourcesRepository : IJuncRepository<List<PlayerResources>>, IDisposable
+   public class PlayerResourcesRepository : IJuncRepository<List<PlayerResources>>, IDisposable
     {
         public void Dispose()
         {
@@ -19,7 +19,7 @@ namespace MyGame.DB.Repositories
         /// </summary>
         /// <param name="playerResource"></param>
         /// <returns></returns>
-        public IQueryable<PlayerResources> GetAllByPlayer(PlayerResources playerResource)
+        public List<PlayerResources> GetAllByPlayer(PlayerResources playerResource)
         {
             var playerResources = new List<PlayerResources>();
             using (var ctx = new MyGameDBContext())
@@ -29,7 +29,7 @@ namespace MyGame.DB.Repositories
             }
 
             
-            return playerResources.AsQueryable();
+            return playerResources;
         }
         /// <summary>
         /// Removes a certain quantity of resources a player owns. If the quantity removed is greater than the quantity in total the resource is removed completely

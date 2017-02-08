@@ -40,7 +40,7 @@ namespace MyGame.MVCSite.BuissnessLogic
             pp.PlayerId = player.PlayerId;
             using (var repo = new PlayerPlanetsRepository())
             {
-                var list = new List<PlayerPlanets>;
+                var list = new List<PlayerPlanets>();
                 list.Add(pp);
                 repo.AddPlanetToPlayer(list);
             }

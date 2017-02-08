@@ -53,7 +53,7 @@ namespace MyGame.MVCSite.BuissnessLogic
 
             }
             int maxsize = rnd.Next(2000, 5001);
-            int currentsize = 500 + (rnd.Next(0, 11) * 50)
+            int currentsize = 500 + (rnd.Next(0, 11) * 50);
             planet.MaxSize = maxsize;
             planet.CurrentSize = currentsize;
             planet.Free = currentsize;

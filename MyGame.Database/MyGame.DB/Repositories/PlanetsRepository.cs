@@ -58,7 +58,10 @@ namespace MyGame.DB.Repositories
                 {
                     item.PlanetName = planet.PlanetName;
                     item.TerrainRefId = planet.TerrainRefId;
-                    item.Terrain = planet.Terrain;
+                    item.Free = planet.Free;
+                    item.MaxSize = planet.MaxSize;
+                    item.Occupied = planet.Occupied;
+
                     ctx.SaveChanges();
                 }
             }

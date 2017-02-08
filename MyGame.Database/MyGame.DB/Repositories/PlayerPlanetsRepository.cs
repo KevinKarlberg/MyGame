@@ -19,7 +19,7 @@ namespace MyGame.DB.Repositories
         /// </summary>
         /// <param name="playerPlanet"></param>
         /// <returns></returns>
-        public IQueryable<PlayerPlanets> GetAllByPlayerAndPlanet(PlayerPlanets playerPlanet)
+        public List<PlayerPlanets> GetAllByPlayerAndPlanet(PlayerPlanets playerPlanet)
         {
             var playerPlanets = new List<PlayerPlanets>();
             using (var ctx = new MyGameDBContext())
@@ -36,7 +36,7 @@ namespace MyGame.DB.Repositories
                 }
 
             }
-            return playerPlanets.AsQueryable();
+            return playerPlanets;
         }
         /// <summary>
         /// Removes a planet and all the buildings that are associated with that planet
@@ -124,6 +124,11 @@ namespace MyGame.DB.Repositories
                 return false;
             return true;
         }
+        /// <summary>
+        /// Removs all planets that belong to a specific player
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public bool RemoveAllByPlayer(Players player)
         {
             string issues = "";
