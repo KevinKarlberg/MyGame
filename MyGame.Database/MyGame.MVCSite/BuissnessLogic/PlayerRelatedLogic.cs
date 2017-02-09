@@ -10,14 +10,29 @@ namespace MyGame.MVCSite.BuissnessLogic
     public class PlayerRelatedLogic
     {
         /// <summary>
-        /// The clean version
+        /// The clean public version of creating a player, returns true or false depending non succeeding
         /// </summary>
-        public void CreateNewPlayer()
+        public bool CreateNewPlayer()
         {
             Players player = PrivateCreateNewPlayer();
+            if (player != null)
+                return true;
+            return false;
         }
         /// <summary>
-        /// The messy private version
+        /// Removing a player and everything he owns from the game
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public bool RemovePlayer(Players player)
+        {
+            using (var repo = new PlayerRepository())
+                if (repo.RemoveAPlayer(player))
+                    return true;
+            return false;
+        }
+        /// <summary>
+        /// The messy private version of creating a player
         /// </summary>
         private Players PrivateCreateNewPlayer()
         {

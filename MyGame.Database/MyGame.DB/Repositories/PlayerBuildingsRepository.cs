@@ -19,7 +19,7 @@ namespace MyGame.DB.Repositories
         /// </summary>
         /// <param name="playerBuilding"></param>
         /// <returns></returns>
-        public IQueryable<PlayerBuildings> GetAllByPlayerAndPlanet(PlayerBuildings playerBuilding)
+        public List<PlayerBuildings> GetAllByPlayerAndPlanet(PlayerBuildings playerBuilding)
         {
             var playerBuildings = new List<PlayerBuildings>();
             using (var ctx = new MyGameDBContext())
@@ -36,7 +36,7 @@ namespace MyGame.DB.Repositories
                 }
 
             }
-            return playerBuildings.AsQueryable();
+            return playerBuildings;
         }
         /// <summary>
         /// Removes a certain quantity of buildings a player owns. If the quantity removed is greater than the quantity in total the building is removed completely

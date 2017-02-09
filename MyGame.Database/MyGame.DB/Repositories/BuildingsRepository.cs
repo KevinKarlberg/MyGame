@@ -21,7 +21,7 @@ namespace MyGame.DB.Repositories
                  
                      .ToList();
             }
-            return buildings.AsQueryable();
+            return buildings;
         }
         public void Dispose()
         {
