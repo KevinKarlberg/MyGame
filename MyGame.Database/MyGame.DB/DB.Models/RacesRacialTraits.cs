@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models
 {
-    class RacesRacialTraits
+   public class RacesRacialTraits
     {
         [Key,Column(Order  = 0)]
         public Guid RaceId { get; set; }
@@ -16,5 +16,7 @@ namespace MyGame.DB.DB.Models
         public Guid RacialTraitsId { get; set; }
         [Required]
         public int? ModifierAmount { get; set; }
+        public virtual RacialTraits RacialTrait { get; set; }
+        public virtual Races Race { get; set; }
     }
 }

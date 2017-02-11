@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.Models\Buildings.cs" />
+    <Compile Include="DB.Models\Missions.cs" />
+    <Compile Include="DB.Models\MissionTypes.cs" />
     <Compile Include="DB.Models\RacesRacialTraits.cs" />
     <Compile Include="DB.Models\RacialTraits.cs" />
     <Compile Include="DB.Models\StructureEffect.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Repositories\MailRepository.cs" />
     <Compile Include="Repositories\MarketContentRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
+    <Compile Include="Repositories\MissionRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
     <Compile Include="Repositories\PlayerMailRepository.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Repositories\PlayerShipsRepository.cs" />
     <Compile Include="Repositories\PlayerTroopsRepository.cs" />
     <Compile Include="Repositories\ProtectionLevelRepository.cs" />
+    <Compile Include="Repositories\RacesRacialTraitsRepository.cs" />
     <Compile Include="Repositories\RacesRepository.cs" />
     <Compile Include="Repositories\ResearchRepository.cs" />
     <Compile Include="Repositories\ResourcesRepsitory.cs" />

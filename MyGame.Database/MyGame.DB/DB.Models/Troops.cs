@@ -20,8 +20,11 @@ namespace MyGame.DB.DB.Models
         [Required]
         public int DefenseValue { get; set; }
         public int Armor { get; set; }
+        [Required]
         public int Health { get; set; }
+        [Required]
         public int AbleToCarry { get; set; }
+        [Required]
         public int PeopleToOperate { get; set; }
         public Guid MarketContentRefId { get; set; }
         [ForeignKey("MarketContentRefId")]

@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.DB.Models
 {
-   public class RacialTraits
+    public class MissionTypes
     {
         [Key]
-        public Guid RacialTraitsId { get; set; }
+        public Guid MissionTypeId { get; set; }
         [Required]
         [MaxLength(50)]
-        public string ModifierName { get; set; }
+        public string MissionTypeName { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string MissionTypeCategory { get; set; }
 
 
     }

@@ -38,16 +38,16 @@ namespace MyGame.DB.Migrations
             List<Buildings> buildings = new List<Buildings>()
             {
                 new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Residental",Description="Builds additional residential areas. Raises population and birthrates"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Banks",Description="Raises the daily income of credits"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Bank",Description="Raises the daily income of credits"},
                 new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Barracks",Description="Lowers the cost and time required to train groundtroops "},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Hangars",Description="Lowers the cost and time required to construct spaceships"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Universities",Description="Increases the efficiency of research"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Technological institutes",Description="Provides free daily points to invest in research"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Hangar",Description="Lowers the cost and time required to construct spaceships"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Universitiy",Description="Increases the efficiency of research"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Technological institute",Description="Provides free daily points to invest in research"},
                 new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Fort",Description="Decreases the training time required to train groundtroops and lowers the cost of defensive specialists"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Space Stations",Description="Increases the efficiency of your orbital defense"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Drills",Description="Produces oil"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Mines",Description="Produces Minerals"},
-                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Power Plants",Description="Produces electricity"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Space Station",Description="Increases the efficiency of your orbital defense"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Drill",Description="Produces oil"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Mine",Description="Produces Minerals"},
+                new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "Power Plant",Description="Produces electricity"},
                 new Buildings() {BuildingId = Guid.NewGuid(), BuildingName = "War mongers guild",Description="Decreases the training cost and time to train offensive specialists"}
             };
             foreach (var item in buildings)

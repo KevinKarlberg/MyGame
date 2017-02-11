@@ -13,7 +13,25 @@ namespace MyGame.DB.Repositories
         {
             
         }
+        public Players GetPlayerByLocation(Location location)
+        {
+            var player = new Players();
+            using (var ctx = new MyGameDBContext())
+            {
+               player = ctx.Players.FirstOrDefault(p => p.LocationRefId == location.LocationId);
+            }
+            return player;
+        }
+        public Players GetPlayerById(Guid playerId)
+        {
+            var player = new Players();
 
+            using (var ctx = new MyGameDBContext())
+            {
+                player = ctx.Players.FirstOrDefault(p => p.PlayerId == playerId);
+            }
+            return player;
+        }
         /// <summary>
         /// Removes a player and everything related to the player via PlayerId
         /// </summary>

@@ -15,28 +15,45 @@ namespace MyGame.DB.Repositories
 
         }
         /// <summary>
-        /// Fetches a list of all the troops a certain player has on a certain location, if location ID is not provided it fetches all the troops a player has in total
+        /// Gets all troops a player has at home
         /// </summary>
-        /// <param name="playerTroop"></param>
+        /// <param name="playership"></param>
         /// <returns></returns>
-        public IQueryable<PlayerTroops> GetAllByPlayerAndOrLocation(PlayerTroops playerTroop)
+        public List<PlayerTroops> GetAllTroopsAPlayerHasAtHome(PlayerTroops playerTroop)
         {
             var playerTroops = new List<PlayerTroops>();
             using (var ctx = new MyGameDBContext())
             {
-                if (playerTroop.LocationId == null)
+                playerTroops = ctx.PlayerTroops.Where(p => p.PlayerId == playerTroop.PlayerId)
+                .ToList();
+            }
+            return playerTroops;
+        }
+        /// <summary>
+        /// Returns the total amount of troops a player has both at home and out on missions
+        /// </summary>
+        /// <param name="playerTroop"></param>
+        /// <returns></returns>
+        public List<PlayerTroops> GetAllTroopsByPlayer(PlayerTroops playerTroop)
+        {
+            var list = new List<PlayerTroops>();
+            var secondList = new List<Missions>();
+            var thirdlist = new List<PlayerTroops>();
+            using (var ctx = new MyGameDBContext())
+            {
+                list = ctx.PlayerTroops.Where(p => p.PlayerId == playerTroop.PlayerId)
+                .ToList();
+                secondList = ctx.Missions.Where(m => m.PlayerRefId == playerTroop.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
                 {
-                    playerTroops = ctx.PlayerTroops.Where(p => p.PlayerId == playerTroop.PlayerId)
-                    .ToList();
-                }
-                else
-                {
-                    playerTroops = ctx.PlayerTroops.Where(p => p.PlayerId == playerTroop.PlayerId && p.TroopId  == playerTroop.TroopId)
-                   .ToList();
+                    thirdlist = secondList[i].Troops.ToList();
+                    var temp = thirdlist.FirstOrDefault(p => p.TroopId == list[i].TroopId);
+                    list[i].Quantity += temp.Quantity;
+
                 }
 
             }
-            return playerTroops.AsQueryable();
+            return list;
         }
         /// <summary>
         /// Removes a certain quantity of troops a player owns. If the quantity removed is greater than the quantity in total the troop is removed completely
@@ -50,7 +67,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.PlayerId == playerTroops[i].PlayerId && p.TroopId == playerTroops[i].TroopId && p.PlayerId == playerTroops[i].PlayerId);
+                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.PlayerId == playerTroops[i].PlayerId && p.TroopId == playerTroops[i].TroopId);
 
                     if (obj != null)
                     {
@@ -105,7 +122,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.TroopId == playerTroops[i].TroopId && p.LocationId == playerTroops[i].LocationId && p.PlayerId == playerTroops[i].PlayerId);
+                    var obj = ctx.PlayerTroops.FirstOrDefault(p => p.TroopId == playerTroops[i].TroopId && p.PlayerId == playerTroops[i].PlayerId);
 
                     if (obj == null)
                     {

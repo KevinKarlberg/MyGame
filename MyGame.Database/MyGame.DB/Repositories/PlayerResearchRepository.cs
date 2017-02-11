@@ -19,7 +19,7 @@ namespace MyGame.DB.Repositories
         /// </summary>
         /// <param name="playerResearch"></param>
         /// <returns></returns>
-        public IQueryable<PlayerResearch> GetAllByPlayerAndResearch(PlayerResearch playerResearch)
+        public List<PlayerResearch> GetAllByPlayerAndResearch(PlayerResearch playerResearch)
         {
             var playerResearches = new List<PlayerResearch>();
             using (var ctx = new MyGameDBContext())
@@ -36,7 +36,7 @@ namespace MyGame.DB.Repositories
                 }
 
             }
-            return playerResearches.AsQueryable();
+            return playerResearches;
         }
 
         /// <summary>

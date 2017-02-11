@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerShipsRepository : IDisposable, IJuncRepository<List<PlayerShips>>
+    public class PlayerShipsRepository : IDisposable, IJuncRepository<List<PlayerShips>>
     {
         public void Dispose()
         {
@@ -16,28 +16,45 @@ namespace MyGame.DB.Repositories
         }
 
         /// <summary>
-        /// Gets all ships a player has at a certain location. If the location is left empty it gets all the ships a player has in all locations combined
+        /// Gets all ships a player has at home
         /// </summary>
         /// <param name="playership"></param>
         /// <returns></returns>
-        public IQueryable<PlayerShips> GetAllByPlayerAndOrLocation(PlayerShips playership)
+        public List<PlayerShips> GetAllShipsAPlayerHasAtHome(PlayerShips playerShip)
         {
             var playerShips = new List<PlayerShips>();
             using (var ctx = new MyGameDBContext())
             {
-                if (playership.LocationId == null)
+                playerShips = ctx.PlayerShips.Where(p => p.PlayerId == playerShip.PlayerId)
+                .ToList();
+            }
+            return playerShips;
+        }
+        /// <summary>
+        /// Returns the total amount of ships a player has both at home and out on missions
+        /// </summary>
+        /// <param name="playerShip"></param>
+        /// <returns></returns>
+        public List<PlayerShips> GetAllShipsByPlayer(PlayerShips playerShip)
+        {
+            var list = new List<PlayerShips>();
+            var secondList = new List<Missions>();
+            var thirdlist = new List<PlayerShips>();
+            using (var ctx = new MyGameDBContext())
+            {
+                list = ctx.PlayerShips.Where(p => p.PlayerId == playerShip.PlayerId)
+                .ToList();
+                secondList = ctx.Missions.Where(m => m.PlayerRefId == playerShip.PlayerId).ToList();
+                for (int i = 0; i < list.Count; i++)
                 {
-                    playerShips = ctx.PlayerShips.Where(p => p.PlayerId == playership.PlayerId)
-                    .ToList();
-                }
-                else
-                {
-                    playerShips = ctx.PlayerShips.Where(p => p.PlayerId == playership.PlayerId && p.LocationId == playership.LocationId)
-                   .ToList();
+                    thirdlist = secondList[i].Ships.ToList();
+                    var temp = thirdlist.FirstOrDefault(p => p.ShipId == list[i].ShipId);
+                    list[i].Quantity += temp.Quantity;
+
                 }
 
             }
-            return playerShips.AsQueryable();
+            return list;
         }
         /// <summary>
         /// Removes a certain quantity of ships a player owns. If the quantity removed is greater than the quantity in total the ship is removed completely
@@ -51,7 +68,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId && p.PlayerId == playerships[i].PlayerId);
+                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.PlayerId == playerships[i].PlayerId);
 
                     if (obj.Quantity > playerships[i].Quantity)
                     {
@@ -100,7 +117,7 @@ namespace MyGame.DB.Repositories
             {
                 using (var ctx = new MyGameDBContext())
                 {
-                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.LocationId == playerships[i].LocationId && p.PlayerId == playerships[i].PlayerId);
+                    var obj = ctx.PlayerShips.FirstOrDefault(p => p.ShipId == playerships[i].ShipId && p.PlayerId == playerships[i].PlayerId);
 
                     if (obj != null)
                     {

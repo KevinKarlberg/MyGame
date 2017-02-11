@@ -15,7 +15,7 @@ namespace MyGame.DB.Repositories
 
         }
         /// <summary>
-        /// Fetches a list of all planets that are attached to a specific player
+        /// Fetches a list of all planets that are attached to a specific player, if planet is filled in it retrieves only that planet
         /// </summary>
         /// <param name="playerPlanet"></param>
         /// <returns></returns>

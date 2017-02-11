@@ -17,9 +17,11 @@ namespace MyGame.DB
         {
 
         }
+        public DbSet<Missions> Missions { get; set; }
         public DbSet<Buildings> Buildings { get; set; }
         public DbSet<Planets> Planets { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public virtual DbSet<RacesRacialTraits> RacesRacialTraits { get; set; }
         public virtual DbSet<PlayerBuildings> PlayerBuildings { get; set; }
         public virtual DbSet<PlayerPlanets> PlayerPlanets { get; set; }
 
