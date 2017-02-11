@@ -139,6 +139,11 @@ namespace MyGame.MVCSite.BuissnessLogic
                 return true;
             return false;
         }
+        /// <summary>
+        /// Razes buildings for a player, returns true based on the success or not of the action
+        /// </summary>
+        /// <param name="playerBuildings"></param>
+        /// <returns></returns>
         public bool RazingBuildingsForPLayer(List<PlayerBuildings> playerBuildings)
         {
             using (var repo = new PlayerBuildingsRepository())
