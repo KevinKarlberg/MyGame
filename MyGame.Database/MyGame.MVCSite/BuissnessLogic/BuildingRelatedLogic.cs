@@ -10,11 +10,11 @@ namespace MyGame.MVCSite.BuissnessLogic
     public class BuildingRelatedLogic
     {
         /// <summary>
-        /// Returns a list of all buildings a new player should start with
+        /// Constructs all the buildings a new player should start with and returns true or false based on the success of that action
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public List<PlayerBuildings> GeneratePlayerBuildingsForNewPlayer(Players player)
+        public bool BuildNewPlayerBuildings(Players player)
         {
             List<PlayerBuildings> pb = new List<PlayerBuildings>();
             using (var repo = new BuildingsRepository())
@@ -57,7 +57,13 @@ namespace MyGame.MVCSite.BuissnessLogic
                     }
                 }
             }
-            return pb;
+            using (var repo = new PlayerBuildingsRepository())
+            {
+                if (repo.AddOrUpdate(pb))
+                    return true;
+                return false;
+            }
+            
         }
         /// <summary>
         /// Checks if the player can afford,and has the required land, to build the desired buildings, and if he can constructs them (Returns a bool on if it was successfull or not)
@@ -91,15 +97,15 @@ namespace MyGame.MVCSite.BuissnessLogic
                 // This loops through all the available resources for the player, and if the player has more of a given resource than he needs, counter gets one additional value
                 for (int i = 0; i < resources.Count; i++)
                 {
-                    if (resources[i].Resource.ResourceName == "Minerals" && resources[i].Quantity > minerals)
+                    if (resources[i].Resource.ResourceName == "Minerals" && resources[i].Quantity >= minerals)
                         counter++;
-                    else if (resources[i].Resource.ResourceName == "Oil" && resources[i].Quantity > oil)
+                    else if (resources[i].Resource.ResourceName == "Oil" && resources[i].Quantity >= oil)
                         counter++;
-                    else if (resources[i].Resource.ResourceName == "Credits" && resources[i].Quantity > credits)
+                    else if (resources[i].Resource.ResourceName == "Credits" && resources[i].Quantity >= credits)
                         counter++;
-                    else if (resources[i].Resource.ResourceName == "Special Credits" && resources[i].Quantity > specialcredits)
+                    else if (resources[i].Resource.ResourceName == "Special Credits" && resources[i].Quantity >= specialcredits)
                         counter++;
-                    else if (resources[i].Resource.ResourceName == "Special Resource" && resources[i].Quantity > specialresource)
+                    else if (resources[i].Resource.ResourceName == "Special Resource" && resources[i].Quantity >= specialresource)
                         counter++;
 
                 }
@@ -140,11 +146,11 @@ namespace MyGame.MVCSite.BuissnessLogic
             return false;
         }
         /// <summary>
-        /// Razes buildings for a player, returns true based on the success or not of the action
+        /// Removes the desired buildings from a specific planet and frees up the space
         /// </summary>
         /// <param name="playerBuildings"></param>
         /// <returns></returns>
-        public bool RazingBuildingsForPLayer(List<PlayerBuildings> playerBuildings)
+        public bool RazingBuildingsForPlayer(List<PlayerBuildings> playerBuildings)
         {
             using (var repo = new PlayerBuildingsRepository())
             {

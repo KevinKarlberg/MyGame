@@ -156,6 +156,51 @@ namespace MyGame.DB.Repositories
 
 
         }
+        /// <summary>
+        /// Updates all values of PlayerPlanets that are not null or 0
+        /// </summary>
+        /// <param name="playerPlanets"></param>
+        /// <returns></returns>
+        public bool AddOrUpdate(List<PlayerPlanets> playerPlanets)
+        {
+            string issues = "";
+            for (int i = 0; i < playerPlanets.Count; i++)
+            {
+                using (var ctx = new MyGameDBContext())
+                {
+                    var obj = ctx.PlayerPlanets.FirstOrDefault(p => p.PlanetId == playerPlanets[i].PlanetId && p.PlayerId == playerPlanets[i].PlayerId);
+
+                    try
+                    {
+                        if (playerPlanets[i].Planet.CurrentPopulation != null)
+                            obj.Planet.CurrentPopulation = playerPlanets[i].Planet.CurrentPopulation;
+                        if (playerPlanets[i].Planet.CurrentSize != 0)
+                            obj.Planet.CurrentSize = playerPlanets[i].Planet.CurrentSize;
+                        if (playerPlanets[i].Planet.Free != 0)
+                            obj.Planet.Free = playerPlanets[i].Planet.Free;
+                        if (playerPlanets[i].Planet.MaxPopulation != null)
+                            obj.Planet.MaxPopulation = playerPlanets[i].Planet.MaxPopulation;
+                        if (playerPlanets[i].Planet.MaxSize != 0)
+                            obj.Planet.MaxSize = playerPlanets[i].Planet.MaxSize;
+                        if (playerPlanets[i].Planet.Occupied != 0)
+                            obj.Planet.Occupied = playerPlanets[i].Planet.Occupied;
+                        if (playerPlanets[i].Planet.PlanetName != null)
+                            obj.Planet.PlanetName = playerPlanets[i].Planet.PlanetName;
+                        if (playerPlanets[i].Planet.TerrainRefId != null)
+                            obj.Planet.TerrainRefId = playerPlanets[i].Planet.TerrainRefId;
+                        ctx.SaveChanges();
+                    }
+                    catch
+                    {
+                        issues += $"Issues with object {i}. ";
+                    }
+                }
+
+            }
+            if (issues != "")
+                return false;
+            return true;
+        }
 
     }
 }

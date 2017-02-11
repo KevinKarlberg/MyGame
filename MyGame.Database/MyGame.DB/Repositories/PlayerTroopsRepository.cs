@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerTroopsRepository : IJuncRepository<List<PlayerTroops>>, IDisposable
+   public class PlayerTroopsRepository : IJuncRepository<List<PlayerTroops>>, IDisposable
     {
         public void Dispose()
         {
@@ -169,6 +169,5 @@ namespace MyGame.DB.Repositories
 
 
         }
-
     }
 }
