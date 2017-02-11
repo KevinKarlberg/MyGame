@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerResearchRepository : IJuncRepository<List<PlayerResearch>>, IDisposable
+   public class PlayerResearchRepository : IJuncRepository<List<PlayerResearch>>, IDisposable
     {
         public void Dispose()
         {

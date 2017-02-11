@@ -107,6 +107,7 @@ namespace MyGame.MVCSite.BuissnessLogic
                     counter++;
                 }
             }
+            // If the counte is 7 here, it means all the pre-requisits were met and the task as a whole was successful.
             if (counter == 7)
                 return true;
             return false;
