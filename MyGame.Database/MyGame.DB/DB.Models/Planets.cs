@@ -15,9 +15,15 @@ namespace MyGame.DB.DB.Models
         [MaxLength(50)]
         public string PlanetName { get; set; }
         [Required]
+        public int? PlanetNumber { get; set; }
+        [Required]
         public int CurrentSize { get; set; }
         [Required]
         public int MaxSize { get; set; }
+        [Required]
+        public int? CurrentPopulation { get; set; }
+        [Required]
+        public int? MaxPopulation { get; set; }
         [Required]
         public int Free { get; set; }
         [Required]

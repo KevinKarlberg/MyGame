@@ -15,10 +15,13 @@ namespace MyGame.DB.DB.Models.Market
         [Required]
         [MaxLength(50)]
         public string MarketContentTarget { get; set; }
+        public Guid? PlanetRefId { get; set; }
         public int? Oil { get; set; }
         public int? Minerals { get; set; }
         public int? Credits { get; set; }
         public int? SpecialCredits { get; set; }
         public int? SpecialResource { get; set; }
+        [ForeignKey("PlanetRefId")]
+        public Planets Planet { get; set; }
     }
 }

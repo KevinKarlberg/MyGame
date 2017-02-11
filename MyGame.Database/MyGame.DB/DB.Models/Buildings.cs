@@ -13,10 +13,11 @@ namespace MyGame.DB.DB.Models
         [Key]
         public Guid BuildingId { get; set; }
         [Required]
-        public int AcresRequired { get; set; }
+        public int SpaceRequired { get; set; }
         [Required]
         [MaxLength(50)]
         public string BuildingName { get; set; }
+        public Guid? TerrainRefId { get; set; }
         [Required]
         public Guid MarketContentRefId { get; set; }
         [Required]
@@ -24,5 +25,7 @@ namespace MyGame.DB.DB.Models
         public string Description { get; set; }
         [ForeignKey("MarketContentRefId")]
         public MarketContent Price { get; set; }
+        [ForeignKey("TerrainRefId")]
+        public Terrain TerrainRequired { get; set; }
     }
 }

@@ -58,6 +58,8 @@ namespace MyGame.DB.Repositories
                             try
                             {
                                 obj.Quantity = obj.Quantity - playerBuildings[i].Quantity;
+                                obj.Planet.Free += playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
+                                obj.Planet.Occupied -= playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
                                 ctx.SaveChanges();
                             }
                             catch
@@ -71,20 +73,20 @@ namespace MyGame.DB.Repositories
                             try
                             {
                                 ctx.PlayerBuildings.Remove(obj);
+                                obj.Planet.Free += playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
+                                obj.Planet.Occupied -= playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
                                 ctx.SaveChanges();
                             }
                             catch
                             {
                                 issues += $"Issues with removing object {i}. ";
                             }
-
-
                         }
+                        
                     }
                     else
                         issues += $"Could not find Item{i} in database";
                 }
-
             }
             if (issues != "")
                 return false;
@@ -93,7 +95,8 @@ namespace MyGame.DB.Repositories
 
 
         /// <summary>
-        /// Adds a certain building to PlayerBuildings list, if the building already exists, it adds the quantity provided ontop of the existing quantity
+        /// Adds a certain building to PlayerBuildings list, if the building already exists, it adds the quantity provided ontop of the existing quantity.
+        /// It also changes the space free/occupied on the planet in which the buildings were made
         /// </summary>
         /// <param name="playerBuildings"></param>
         /// <returns></returns>
@@ -110,6 +113,9 @@ namespace MyGame.DB.Repositories
                     {
                         try
                         {
+                           
+                            playerBuildings[i].Planet.Free -= playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
+                            playerBuildings[i].Planet.Occupied += playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
                             ctx.PlayerBuildings.Add(playerBuildings[i]);
                             ctx.SaveChanges();
 
@@ -125,6 +131,8 @@ namespace MyGame.DB.Repositories
                         try
                         {
                             obj.Quantity = obj.Quantity + playerBuildings[i].Quantity;
+                            obj.Planet.Free -= playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
+                            obj.Planet.Occupied += playerBuildings[i].Quantity * playerBuildings[i].Building.SpaceRequired;
                             ctx.SaveChanges();
                         }
                         catch

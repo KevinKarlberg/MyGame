@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MyGame.DB.DB.Models.Market;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,5 +15,16 @@ namespace MyGame.DB.DB.Models
         [Required]
         [MaxLength(50)]
         public string TroopName { get; set; }
+        [Required]
+        public int AttackValue { get; set; }
+        [Required]
+        public int DefenseValue { get; set; }
+        public int Armor { get; set; }
+        public int Health { get; set; }
+        public int AbleToCarry { get; set; }
+        public int PeopleToOperate { get; set; }
+        public Guid MarketContentRefId { get; set; }
+        [ForeignKey("MarketContentRefId")]
+        public MarketContent Price { get; set; }
     }
 }

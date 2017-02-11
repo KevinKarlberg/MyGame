@@ -50,11 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.Models\Buildings.cs" />
-    <Compile Include="DB.Models\BuildingStructureEffects.cs" />
     <Compile Include="DB.Models\RacesRacialTraits.cs" />
     <Compile Include="DB.Models\RacialTraits.cs" />
     <Compile Include="DB.Models\StructureEffect.cs" />
-    <Compile Include="DB.Models\SystemChat\BuildingsStructureEffect.cs" />
+    <Compile Include="DB.Models\BuildingsStructureEffect.cs" />
     <Compile Include="DB.Models\SystemChat\Chat.cs" />
     <Compile Include="DB.Models\Location.cs" />
     <Compile Include="DB.Models\Mailfunction\Mail.cs" />
