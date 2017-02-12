@@ -1,4 +1,5 @@
 ﻿using MyGame.DB.DB.Models;
+using MyGame.DB.DB.Models.Mailfunction;
 using MyGame.DB.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,14 @@ namespace MyGame.UpdateProgram.Updates
 {
     class Update
     {
+        string Message = "";
+        List<PlayerShips> shipsKilled = new List<PlayerShips>();
+        List<PlayerShips> shipsLost = new List<PlayerShips>();
+        List<PlayerTroops> troopsKilled = new List<PlayerTroops>();
+        List<PlayerTroops> troopsLost = new List<PlayerTroops>();
+        PlayerShips ps = new PlayerShips();
+        PlayerTroops pt = new PlayerTroops();
+        int ShipsLost = 0;
         public bool RegularUpdate()
         {
             return true;
@@ -260,6 +269,7 @@ namespace MyGame.UpdateProgram.Updates
                     // Removing all the dead ships from the defending player
                     for (int i = 0; i < defendingPlayerShips.Count; i++)
                     {
+                        LogDeadShip(defendingPlayerShips[i]);
                         defendingPlayerShips[i].Quantity = 0;
                     }
                     didAttackerWin = true;
@@ -276,23 +286,36 @@ namespace MyGame.UpdateProgram.Updates
                                 attackingPlayerShips[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadShip(attackingPlayerShips[i]);
                                 attackingPlayerShips[i].Quantity = 0;
+                            }
                         }
                         else if (tooMuchArmor)
+                        {
+                            LogDeadShip(attackingPlayerShips[i]);
                             attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * (percentageOfKillsShips) / 2);
-                        attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+                        else
+                        {
+                            LogDeadShip(attackingPlayerShips[i]);
+                            attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+
                     }
                 }
-                // This part removes all the ships from teh attacker if the defender has enough to wipe him
+                // This part removes all the ships from the attacker if the defender has enough to wipe him
                 else if (defenderStats[0] > (attackerStats[1] + attackerStats[2]))
                 {
-                    // Removing all the dead ships from the defending player
-                    for (int i = 0; i < defendingPlayerShips.Count; i++)
+                    // Removing all the dead ships from the attacking player
+                    for (int i = 0; i < attackingPlayerShips.Count; i++)
                     {
+                        LogDeadShip(attackingPlayerShips[i]);
                         attackingPlayerShips[i].Quantity = 0;
                     }
                     percentageOfKillsShips = 0;
                     percentageOfKillsShips = (1 - (defenderStats[0] / (attackerStats[1] + attackerStats[2])));
+                    // This removes the ships the attacker killed before being wiped
                     for (int i = 0; i < defendingPlayerShips.Count; i++)
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
@@ -304,11 +327,24 @@ namespace MyGame.UpdateProgram.Updates
                                 defendingPlayerShips[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadShip(defendingPlayerShips[i]);
                                 defendingPlayerShips[i].Quantity = 0;
+                            }
+
                         }
-                        if (tooMuchArmor)
+                        else if (tooMuchArmor)
+                        {
+                            LogDeadShip(defendingPlayerShips[i]);
                             defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * (percentageOfKillsShips) / 2);
-                        defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+                        else
+                        {
+                            LogDeadShip(defendingPlayerShips[i]);
+                            defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+
+
                     }
                 }
                 // This part is if neither the attacker nor the defender has enough to wipe eachother
@@ -331,11 +367,25 @@ namespace MyGame.UpdateProgram.Updates
                                 defendingPlayerShips[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadShip(defendingPlayerShips[i]);
                                 defendingPlayerShips[i].Quantity = 0;
+                            }
+
                         }
-                        if (tooMuchArmor)
+                        else if (tooMuchArmor)
+                        {
+
+                            LogDeadShip(defendingPlayerShips[i]);
                             defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * (percentageOfKillsShips) / 2);
-                        defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+                        else
+                        {
+                            LogDeadShip(defendingPlayerShips[i]);
+                            defendingPlayerShips[i].Quantity -= (int)(defendingPlayerShips[i].Quantity * percentageOfKillsShips);
+
+
+                        }
                     }
                     percentageOfKillsShips = 0;
                     percentageOfKillsShips = (1 - (defenderStats[0] / (attackerStats[1] + attackerStats[2])));
@@ -350,11 +400,24 @@ namespace MyGame.UpdateProgram.Updates
                                 attackingPlayerShips[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadShip(attackingPlayerShips[i]);
                                 attackingPlayerShips[i].Quantity = 0;
+                            }
+                                
                         }
-                        if (tooMuchArmor)
+                        else if (tooMuchArmor)
+                        {
+                            attackingPlayerShips[i].Quantity = 0;
                             attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * (percentageOfKillsShips) / 2);
-                        attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+                        else
+                        {
+                            attackingPlayerShips[i].Quantity = 0;
+                            attackingPlayerShips[i].Quantity -= (int)(attackingPlayerShips[i].Quantity * percentageOfKillsShips);
+                        }
+                            
+                       
                     }
                     #endregion
 
@@ -554,6 +617,7 @@ namespace MyGame.UpdateProgram.Updates
                     // Removing all the dead ships from the defending player
                     for (int i = 0; i < defenderTroopList.Count; i++)
                     {
+                        LogDeadTroop(defenderTroopList[i]);
                         defenderTroopList[i].Quantity = 0;
                     }
                     didAttackerWin = true;
@@ -570,7 +634,11 @@ namespace MyGame.UpdateProgram.Updates
                                 attackerTroopList[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadTroop(attackerTroopList[i]);
                                 attackerTroopList[i].Quantity = 0;
+                            }
+                                
                         }
                         attackerTroopList[i].Quantity -= (int)(attackerTroopList[i].Quantity * percentageOfTroopsKilled);
                     }
@@ -582,6 +650,7 @@ namespace MyGame.UpdateProgram.Updates
                     // Removing all the dead ships from the defending player
                     for (int i = 0; i < defenderTroopList.Count; i++)
                     {
+                        LogDeadTroop(attackerTroopList[i]);
                         attackerTroopList[i].Quantity = 0;
                     }
                     percentageOfTroopsKilled = 0;
@@ -597,7 +666,11 @@ namespace MyGame.UpdateProgram.Updates
                                 defenderTroopList[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadTroop(defenderTroopList[i]);
                                 defenderTroopList[i].Quantity = 0;
+                            }
+                                
                         }
                         defenderTroopList[i].Quantity -= (int)(defenderTroopList[i].Quantity * percentageOfTroopsKilled);
                     }
@@ -621,7 +694,11 @@ namespace MyGame.UpdateProgram.Updates
                                 defenderTroopList[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadTroop(defenderTroopList[i]);
                                 defenderTroopList[i].Quantity = 0;
+                            }
+                                
                         }
                         defenderTroopList[i].Quantity -= (int)(defenderTroopList[i].Quantity * percentageOfTroopsKilled);
                     }
@@ -638,11 +715,20 @@ namespace MyGame.UpdateProgram.Updates
                                 attackerTroopList[i].Quantity = 1;
                             }
                             else
+                            {
+                                LogDeadTroop(attackerTroopList[i]);
                                 attackerTroopList[i].Quantity = 0;
+                            }
+                                
                         }
-                        attackerTroopList[i].Quantity -= (int)(attackerTroopList[i].Quantity * percentageOfTroopsKilled);
+                        else
+                        {
+                            LogDeadTroop(attackerTroopList[i]);
+                            attackerTroopList[i].Quantity -= (int)(attackerTroopList[i].Quantity * percentageOfTroopsKilled);
+                        }
+                        
                     }
-                    
+
 
 
                 }
@@ -667,7 +753,7 @@ namespace MyGame.UpdateProgram.Updates
                                 var list = repo.GetAllByPlayer(pr);
                                 for (int i = 0; i < attackerTroopList.Count; i++)
                                 {
-                                   totalAmountOfResourcesPlayerCanTake += attackerTroopList[i].Troops.AbleToCarry;
+                                    totalAmountOfResourcesPlayerCanTake += attackerTroopList[i].Troops.AbleToCarry;
                                 }
                                 for (int i = 0; i < list.Count; i++)
                                 {
@@ -689,12 +775,12 @@ namespace MyGame.UpdateProgram.Updates
                                         }
                                         else if (list[i].Resource.ResourceName == "Credits")
                                         {
-                                            mission.CarryingResources.Oil += (int)(list[i].Quantity * 0.8);
+                                            mission.CarryingResources.Credits += (int)(list[i].Quantity * 0.8);
                                             list[i].Quantity -= (int)(list[i].Quantity * 0.8);
                                         }
                                         else if (list[i].Resource.ResourceName == "Special Resource")
                                         {
-                                            mission.CarryingResources.Oil += (int)(list[i].Quantity * 0.8);
+                                            mission.CarryingResources.SpecialResource += (int)(list[i].Quantity * 0.8);
                                             list[i].Quantity -= (int)(list[i].Quantity * 0.8);
                                         }
                                     }
@@ -715,12 +801,12 @@ namespace MyGame.UpdateProgram.Updates
                                         }
                                         else if (list[i].Resource.ResourceName == "Credits")
                                         {
-                                            mission.CarryingResources.Oil += (int)(list[i].Quantity * (totalAmountOfResourcesPlayerCanTake / totalAmountOfResourcesDefenderHas));
+                                            mission.CarryingResources.Credits += (int)(list[i].Quantity * (totalAmountOfResourcesPlayerCanTake / totalAmountOfResourcesDefenderHas));
                                             list[i].Quantity -= (int)(list[i].Quantity * 0.8);
                                         }
                                         else if (list[i].Resource.ResourceName == "Special Resource")
                                         {
-                                            mission.CarryingResources.Oil += (int)(list[i].Quantity * (totalAmountOfResourcesPlayerCanTake / totalAmountOfResourcesDefenderHas));
+                                            mission.CarryingResources.SpecialResource += (int)(list[i].Quantity * (totalAmountOfResourcesPlayerCanTake / totalAmountOfResourcesDefenderHas));
                                             list[i].Quantity -= (int)(list[i].Quantity * 0.8);
                                         }
                                     }
@@ -731,7 +817,7 @@ namespace MyGame.UpdateProgram.Updates
                             {
                                 repo.CreateOrUpdateAMission(mission);
                             }
-                                break;
+                            break;
                         #endregion
                         case "Raze":
                             break;
@@ -778,6 +864,39 @@ namespace MyGame.UpdateProgram.Updates
                     repo.RemoveOrUpdate(defendingPlayerShips);
                 }
             }
+            return true;
+        }
+        /// <summary>
+        /// Creates a notification mail a player when something happened they need to become aware of 
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="message"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private bool CreateMailForPlayers(Players player, string type)
+        {
+            Mail mail = new Mail();
+            using (var repo = new MailRepository())
+            {
+                mail.MailID = Guid.NewGuid();
+                mail.Sent = DateTime.Now;
+                SetMailMessage();
+                mail.MailContentMessage = Message;
+            }
+            using (var repo = new PlayerMailRepository())
+            {
+                var pm = new PlayerMail();
+                using (var playerRepo = new PlayerRepository())
+                {
+                    pm.SendingPlayerId = playerRepo.GetAdminGuidForAdminMessages(type);
+                }
+
+                pm.MailID = mail.MailID;
+                pm.IsRead = false;
+                pm.Reciever.PlayerId = player.PlayerId;
+                repo.AddMail(pm);
+            }
+
             return true;
         }
         private List<Missions> AreThereAlliedShipsOnMyPlanet(Players player)
@@ -871,6 +990,25 @@ namespace MyGame.UpdateProgram.Updates
 
             }
 
+        }
+        private void LogDeadShip(PlayerShips playerShip)
+        {
+            shipsLost.Add(playerShip);
+            shipsKilled.Add(playerShip);
+        }
+        private void LogDeadTroop(PlayerTroops playerTroop)
+        {
+            troopsLost.Add(playerTroop);
+            troopsKilled.Add(playerTroop);
+        }
+        private void SetMailMessage()
+        {
+            Message = 
+$@"Greetings from your War Council
+
+Your attack on hit and  yada yda ayada
+Stuff stuff stuff
+And also more stuff here";
         }
     }
 }

@@ -148,17 +148,11 @@ namespace MyGame.DB.Repositories
                 {
 
                     if (mission.CarryingResources.Credits != null)
-                        obj.CarryingResources.Credits += mission.CarryingResources.Credits;
-                    else if (mission.CarryingResources.Minerals != null)
-                        obj.CarryingResources.Minerals += mission.CarryingResources.Minerals;
-                    else if (mission.CarryingResources.Oil != null)
-                        obj.CarryingResources.Oil += mission.CarryingResources.Oil;
-                    else if (mission.CarryingResources.SpecialResource != null)
-                        obj.CarryingResources.SpecialResource += mission.CarryingResources.SpecialResource;
-                    else if (mission.CarryingResources.SpecialCredits != null)
-                        obj.CarryingResources.SpecialCredits += mission.CarryingResources.SpecialCredits;
-                    else if (mission.CarryingResources.Minerals != null)
-                        obj.CarryingResources.Minerals += mission.CarryingResources.Minerals;
+                        obj.CarryingResources = mission.CarryingResources;
+                    else if (mission.Ships != null)
+                        obj.Ships = mission.Ships;
+                    else if (mission.Troops != null)
+                        obj.Troops = mission.Troops;
                     else if (mission.Landing != null)
                         obj.Landing = mission.Landing;
                     else if (mission.Returned != null)
@@ -167,6 +161,9 @@ namespace MyGame.DB.Repositories
                         obj.Returning = mission.Returning;
                     else if (mission.Target != null)
                         obj.Target = mission.Target;
+                    else if (mission.MissionType != null)
+                        obj.MissionType = mission.MissionType;
+
 
                 }
             }

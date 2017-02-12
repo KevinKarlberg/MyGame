@@ -13,6 +13,20 @@ namespace MyGame.DB.Repositories
         {
             
         }
+        public Guid GetAdminGuidForAdminMessages(string type)
+        {
+            var admin = new Players();
+            using (var ctx = new MyGameDBContext())
+            {
+                if (type == "Attack")
+                    admin = ctx.Players.FirstOrDefault(p => p.EmpireName == "War Council");
+                else if(type == "War")
+                    admin = ctx.Players.FirstOrDefault(p => p.EmpireName == "Local Cluster");
+                else if (type == "Defense")
+                    admin = ctx.Players.FirstOrDefault(p => p.EmpireName == "Defense Council");
+            }
+            return admin.PlayerId;
+        }
         public Players GetPlayerByLocation(Location location)
         {
             var player = new Players();

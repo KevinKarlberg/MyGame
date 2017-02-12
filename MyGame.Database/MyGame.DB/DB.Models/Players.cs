@@ -25,7 +25,7 @@ namespace MyGame.DB.DB.Models
         [Required]
         public int ElectricityAvailable { get; set; }
         public Guid RaceRefId { get; set; }
-        public Guid LocationRefId { get; set; }
+        public Guid? LocationRefId { get; set; }
         [ForeignKey("RaceRefId")]
         public virtual Races Race { get; set; }
         [ForeignKey("LocationRefId")]

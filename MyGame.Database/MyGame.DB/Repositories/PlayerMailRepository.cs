@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-    class PlayerMailRepository : IDisposable
+   public class PlayerMailRepository : IDisposable
     {
         public void Dispose()
         {
