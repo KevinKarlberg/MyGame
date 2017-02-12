@@ -7,13 +7,23 @@ using System.Threading.Tasks;
 
 namespace MyGame.DB.Repositories
 {
-   public class MissionRepository : IDisposable
+    public class MissionRepository : IDisposable
     {
         public void Dispose()
         {
             throw new NotImplementedException();
         }
 
+        public List<Missions> GetAllMissionsByLocation(Players player)
+        {
+            List<Missions> list = new List<Missions>();
+            using (var ctx = new MyGameDBContext())
+            {
+                list = ctx.Missions.Where(m => m.Target.LocationId == player.Location.LocationId).ToList();
+            }
+            return list;
+
+        }
         public List<Missions> GetAllCurrentMissions()
         {
             List<Missions> list = new List<Missions>();
@@ -136,10 +146,42 @@ namespace MyGame.DB.Repositories
                 var obj = ctx.Missions.FirstOrDefault(m => m.MissionId == mission.MissionId);
                 if (obj != null)
                 {
-                    obj.
+
+                    if (mission.CarryingResources.Credits != null)
+                        obj.CarryingResources.Credits += mission.CarryingResources.Credits;
+                    else if (mission.CarryingResources.Minerals != null)
+                        obj.CarryingResources.Minerals += mission.CarryingResources.Minerals;
+                    else if (mission.CarryingResources.Oil != null)
+                        obj.CarryingResources.Oil += mission.CarryingResources.Oil;
+                    else if (mission.CarryingResources.SpecialResource != null)
+                        obj.CarryingResources.SpecialResource += mission.CarryingResources.SpecialResource;
+                    else if (mission.CarryingResources.SpecialCredits != null)
+                        obj.CarryingResources.SpecialCredits += mission.CarryingResources.SpecialCredits;
+                    else if (mission.CarryingResources.Minerals != null)
+                        obj.CarryingResources.Minerals += mission.CarryingResources.Minerals;
+                    else if (mission.Landing != null)
+                        obj.Landing = mission.Landing;
+                    else if (mission.Returned != null)
+                        obj.Returned = mission.Returned;
+                    else if (mission.Returning != null)
+                        obj.Returning = mission.Returning;
+                    else if (mission.Target != null)
+                        obj.Target = mission.Target;
+
                 }
             }
-                return true;
+            return true;
+        }
+        public bool UpdateTroopsAndShipsOnMission(Missions mission)
+        {
+            using (var ctx = new MyGameDBContext())
+            {
+                var obj = ctx.Missions.FirstOrDefault(m => m.MissionId == mission.MissionId);
+                obj.Ships = mission.Ships;
+                obj.Troops = mission.Troops;
+                ctx.SaveChanges();
+            }
+            return true;
         }
     }
 }
