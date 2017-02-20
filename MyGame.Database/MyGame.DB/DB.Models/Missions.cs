@@ -14,7 +14,6 @@ namespace MyGame.DB.DB.Models
         [Key]
         public Guid MissionId { get; set; }
         [Required]
-        [MaxLength(50)]
         public Guid MissionTypeRefId { get; set; }
         [Required]
         public DateTime Started { get; set; }

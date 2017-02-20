@@ -17,6 +17,7 @@ namespace MyGame.DB
         {
 
         }
+        public DbSet<MissionTypes> MissionTypes { get; set; }
         public DbSet<Missions> Missions { get; set; }
         public DbSet<Buildings> Buildings { get; set; }
         public DbSet<Planets> Planets { get; set; }

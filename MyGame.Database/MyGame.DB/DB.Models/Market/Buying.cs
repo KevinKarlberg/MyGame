@@ -14,7 +14,7 @@ namespace MyGame.DB.DB.Models.Market
         public Guid BuyingID { get; set; }
 
         public Guid BuyingMarketContentRefId { get; set; }
-        [ForeignKey("MarketContentRefId")]
+        [ForeignKey("BuyingMarketContentRefId")]
         public virtual MarketContent MarketContent { get; set; }
     }
 }

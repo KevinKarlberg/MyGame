@@ -279,7 +279,7 @@ namespace MyGame.UpdateProgram.Updates
                         percentageOfKillsShips = (1 - (defenderStats[0] / (attackerStats[1] + attackerStats[2])));
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((attackingPlayerShips[i].Quantity *= (int)percentageOfKillsShips) < 1)
+                        if ((attackingPlayerShips[i].Quantity *= (1 - (int)percentageOfKillsShips)) < 1)
                         {
                             if (rnd.Next(0, 101) >= (int)(percentageOfKillsShips * 100))
                             {
@@ -320,7 +320,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((defendingPlayerShips[i].Quantity *= (int)percentageOfKillsShips) < 1)
+                        if ((defendingPlayerShips[i].Quantity *= (1 - (int)percentageOfKillsShips)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfKillsShips * 100))
                             {
@@ -360,7 +360,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((defendingPlayerShips[i].Quantity *= (int)percentageOfKillsShips) < 1)
+                        if ((defendingPlayerShips[i].Quantity *= (1 - (int)percentageOfKillsShips)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfKillsShips * 100))
                             {
@@ -393,7 +393,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((attackingPlayerShips[i].Quantity *= (int)percentageOfKillsShips) < 1)
+                        if ((attackingPlayerShips[i].Quantity *= (1-(int)percentageOfKillsShips)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfKillsShips * 100))
                             {
@@ -627,7 +627,7 @@ namespace MyGame.UpdateProgram.Updates
                         percentageOfTroopsKilled = (1 - (defenderStats[0] / (attackerStats[1] + attackerStats[2])));
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((attackerTroopList[i].Quantity *= (int)percentageOfTroopsKilled) < 1)
+                        if ((attackerTroopList[i].Quantity *= (1 - (int)percentageOfTroopsKilled)) < 1)
                         {
                             if (rnd.Next(0, 101) >= (int)(percentageOfTroopsKilled * 100))
                             {
@@ -659,7 +659,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((defenderTroopList[i].Quantity *= (int)percentageOfTroopsKilled) < 1)
+                        if ((defenderTroopList[i].Quantity *= (1 - (int)percentageOfTroopsKilled)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfTroopsKilled * 100))
                             {
@@ -687,7 +687,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((defenderTroopList[i].Quantity *= (int)percentageOfTroopsKilled) < 1)
+                        if ((defenderTroopList[i].Quantity *= (1 - (int)percentageOfTroopsKilled)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfTroopsKilled * 100))
                             {
@@ -708,7 +708,7 @@ namespace MyGame.UpdateProgram.Updates
                     {
                         // If the quantity of ships after the quantity has been changed is less than one
                         // this part gives it a percentage based upon the percentage of surviving ships to live
-                        if ((attackerTroopList[i].Quantity *= (int)percentageOfTroopsKilled) < 1)
+                        if ((attackerTroopList[i].Quantity *= (1 - (int)percentageOfTroopsKilled)) < 1)
                         {
                             if (rnd.Next(0, 101) <= (int)(percentageOfTroopsKilled * 100))
                             {
