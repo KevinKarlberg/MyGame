@@ -12,7 +12,6 @@ namespace MyGame.DB.DB.Models.SystemChat
     {
         [Key]
         public int ChatID { get; set; }
-        [MaxLength(500)]
         public DateTime TimeStamp { get; set; }
 
          // F-Key

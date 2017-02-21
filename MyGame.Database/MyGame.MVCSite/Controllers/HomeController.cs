@@ -12,7 +12,6 @@ namespace MyGame.MVCSite.Controllers
     {
         public ActionResult Index()
         {
-            
             return View();
         }
 

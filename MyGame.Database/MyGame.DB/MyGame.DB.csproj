@@ -98,6 +98,7 @@
     <Compile Include="Repositories\MarketContentRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\MissionRepository.cs" />
+    <Compile Include="Repositories\MissionTypesRepository.cs" />
     <Compile Include="Repositories\PlanetsRepository.cs" />
     <Compile Include="Repositories\PlayerBuildingsRepository.cs" />
     <Compile Include="Repositories\PlayerMailRepository.cs" />
