@@ -27,6 +27,8 @@ namespace MyGame.DB.DB.Models
         [Required]
         public int PeopleToOperate { get; set; }
         [Required]
+        public int Speed { get; set; }
+        [Required]
         public Guid MarketContentRefId { get; set; }
         [ForeignKey("MarketContentRefId")]
         public virtual MarketContent Cost { get; set; }
