@@ -103,9 +103,9 @@ namespace MyGame.DB.Migrations
             #region Planets
             List<Planets> planets = new List<Planets>()
             {
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[0].TerrainId},
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(), TerrainRefId = terrain[1].TerrainId},
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[2].TerrainId}
+                new Planets() {PlanetId = Guid.Parse("c6e51fb5-57fc-4b9e-ab99-cab987d1e763"), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[0].TerrainId},
+                new Planets() {PlanetId = Guid.Parse("7b82b99e-2ceb-473c-bb3b-d94e0acf1e27"), PlanetName = GeneratePlanetName(), TerrainRefId = terrain[1].TerrainId},
+                new Planets() {PlanetId = Guid.Parse("6238b082-8b09-442a-80ac-22e2ca083881"), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[2].TerrainId}
             };
             foreach (var item in planets)
             {
@@ -129,9 +129,9 @@ namespace MyGame.DB.Migrations
             #region Research
             List<Research> research = new List<Research>()
             {
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Economical"},
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Military"},
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Flight speed"}
+                new Research() {ResearchId = Guid.Parse("b0d657e1-8dbb-4c0f-89b5-6fc38d85739b"), ResearchName = "Economical"},
+                new Research() {ResearchId = Guid.Parse("42a5a811-e13a-4ef4-9342-5025328d0775"), ResearchName = "Military"},
+                new Research() {ResearchId = Guid.Parse("edf9c72e-c73a-4f95-b083-8b7805b829ab"), ResearchName = "Flight speed"}
             };
             foreach (var item in research)
             {
