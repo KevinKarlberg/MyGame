@@ -142,9 +142,9 @@ namespace MyGame.DB.Migrations
             #region Resources
             List<Resources> resources = new List<Resources>()
             {
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Residental"},
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Banks"},
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Barracks"}
+                new Resources() {ResourceId = Guid.Parse("1b98c5ab-ea44-4f7d-8d81-ffaf1777f3ec"), ResourceName = "Residental"},
+                new Resources() {ResourceId = Guid.Parse("b353a509-3e83-4863-8552-81eb1a76e18d"), ResourceName = "Banks"},
+                new Resources() {ResourceId = Guid.Parse("83b91faf-8abe-49e6-9fbb-24a8d79550e8"), ResourceName = "Barracks"}
             };
             foreach (var item in resources)
             {
@@ -155,9 +155,9 @@ namespace MyGame.DB.Migrations
             #region Players
             List<Players> players = new List<Players>()
             {
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Water", ElectricityLevel=5, EmpireStrength= 2,Level=1, LocationRefId = locations[0].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid() },
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Mineral", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[1].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()},
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Gas", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[2].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()}
+                new Players() {PlayerId = Guid.Parse("c6eb7022-f49e-412d-b4d6-f1e63b03a778"), EmpireName = "Water", ElectricityLevel=5, EmpireStrength= 2,Level=1, LocationRefId = locations[0].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid() },
+                new Players() {PlayerId = Guid.Parse("2a5dea45-9fa0-4ac4-ba2d-96715188bac4"), EmpireName = "Mineral", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[1].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()},
+                new Players() {PlayerId = Guid.Parse("e3da88ba-8b89-4643-b760-ba5d9603e775"), EmpireName = "Gas", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[2].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()}
             };
             foreach (var item in players)
             {
