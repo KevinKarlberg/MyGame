@@ -21,12 +21,12 @@ namespace MyGame.DB.Migrations
             #region Races
             List<Races> races = new List<Races>()
             {
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Raptors", Description=" A lizardlike species bent on universal domination. Raptors multiply like no other and usually overcome their opponents with sheer numbers. With frightening technology that is based on a mix of biology and machine they instil fear in their enemies", RacialTraits="+15% Population growth, -15% Ship construction cost/time"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Centians", Description=" Natural galactic leaders, respected and adored throughout the universe for their benevolent nature and kind guidance. But even kindness has it’s limits", RacialTraits="+10% Galaxy guarding forces, +3% generated resources for holding galactic center"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Mixxels", Description="Having entered stage three and harnessing the power of galaxies, they are able to slip in and out of this dimension, cloaking their movement and transgressing distances with incredible speed. Neither friendly nor ruthless they maintain their own independence from their galactic neighbours.", RacialTraits="+15% Attack speed,  Undetectable attacks"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Humans", Description="Having finally evolved past their own petty differences, humans took to the stars in an attempt to spread the teachings of lord hubbard throughout the galaxy, Clearly the craziest of all the species you never know what will happen whilst fighting a human", RacialTraits="3x the random factor in battle, -5% troop construction time"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Rogans", Description="The pinnacle of aggression. Rogans know nothing but war and thrive within in. It’s only during war times rogans find themselves being the best they can be, and as such it’s recommended to interact with them as little as possible",RacialTraits="+10% resource collection during war, -10% training/building cost and time during war"},
-                new Races() {RaceId = Guid.NewGuid(), RaceName = "Fenxians", Description="Traders, through and through. Making a deal with a fenxian is almost always going to be the most lucrative thing for you, but expect them to get an even better deal for themselves",RacialTraits="No fee on the marketplace, Double the amount of daily marketplace deals."}
+                new Races() {RaceId = Guid.Parse("1a4ba370-cb02-49d2-ab72-b1ad019943dc"), RaceName = "Raptors", Description=" A lizardlike species bent on universal domination. Raptors multiply like no other and usually overcome their opponents with sheer numbers. With frightening technology that is based on a mix of biology and machine they instil fear in their enemies", RacialTraits="+15% Population growth, -15% Ship construction cost/time"},
+                new Races() {RaceId = Guid.Parse("d401dbb4-f470-47c8-9075-8cfed7665e8c"), RaceName = "Centians", Description=" Natural galactic leaders, respected and adored throughout the universe for their benevolent nature and kind guidance. But even kindness has it’s limits", RacialTraits="+10% Galaxy guarding forces, +3% generated resources for holding galactic center"},
+                new Races() {RaceId = Guid.Parse("32f4f4fc-6637-4c65-9b8a-33576f7e4c27"), RaceName = "Mixxels", Description="Having entered stage three and harnessing the power of galaxies, they are able to slip in and out of this dimension, cloaking their movement and transgressing distances with incredible speed. Neither friendly nor ruthless they maintain their own independence from their galactic neighbours.", RacialTraits="+15% Attack speed,  Undetectable attacks"},
+                new Races() {RaceId = Guid.Parse("b1140d07-c9cb-4e86-814d-aef827cabc72"), RaceName = "Humans", Description="Having finally evolved past their own petty differences, humans took to the stars in an attempt to spread the teachings of lord hubbard throughout the galaxy, Clearly the craziest of all the species you never know what will happen whilst fighting a human", RacialTraits="3x the random factor in battle, -5% troop construction time"},
+                new Races() {RaceId = Guid.Parse("42f53543-710a-4b74-af37-08fbebae8ca3"), RaceName = "Rogans", Description="The pinnacle of aggression. Rogans know nothing but war and thrive within in. It’s only during war times rogans find themselves being the best they can be, and as such it’s recommended to interact with them as little as possible",RacialTraits="+10% resource collection during war, -10% training/building cost and time during war"},
+                new Races() {RaceId = Guid.Parse("5bcdbfdc-3a14-4743-9e96-c7b6b59cc267"), RaceName = "Fenxians", Description="Traders, through and through. Making a deal with a fenxian is almost always going to be the most lucrative thing for you, but expect them to get an even better deal for themselves",RacialTraits="No fee on the marketplace, Double the amount of daily marketplace deals."}
             };
             foreach (var item in races)
             {
@@ -103,9 +103,9 @@ namespace MyGame.DB.Migrations
             #region Planets
             List<Planets> planets = new List<Planets>()
             {
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[0].TerrainId},
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(), TerrainRefId = terrain[1].TerrainId},
-                new Planets() {PlanetId = Guid.NewGuid(), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[2].TerrainId}
+                new Planets() {PlanetId = Guid.Parse("c6e51fb5-57fc-4b9e-ab99-cab987d1e763"), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[0].TerrainId},
+                new Planets() {PlanetId = Guid.Parse("7b82b99e-2ceb-473c-bb3b-d94e0acf1e27"), PlanetName = GeneratePlanetName(), TerrainRefId = terrain[1].TerrainId},
+                new Planets() {PlanetId = Guid.Parse("6238b082-8b09-442a-80ac-22e2ca083881"), PlanetName = GeneratePlanetName(),TerrainRefId = terrain[2].TerrainId}
             };
             foreach (var item in planets)
             {
@@ -129,9 +129,9 @@ namespace MyGame.DB.Migrations
             #region Research
             List<Research> research = new List<Research>()
             {
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Economical"},
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Military"},
-                new Research() {ResearchId = Guid.NewGuid(), ResearchName = "Flight speed"}
+                new Research() {ResearchId = Guid.Parse("b0d657e1-8dbb-4c0f-89b5-6fc38d85739b"), ResearchName = "Economical"},
+                new Research() {ResearchId = Guid.Parse("42a5a811-e13a-4ef4-9342-5025328d0775"), ResearchName = "Military"},
+                new Research() {ResearchId = Guid.Parse("edf9c72e-c73a-4f95-b083-8b7805b829ab"), ResearchName = "Flight speed"}
             };
             foreach (var item in research)
             {
@@ -142,9 +142,9 @@ namespace MyGame.DB.Migrations
             #region Resources
             List<Resources> resources = new List<Resources>()
             {
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Residental"},
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Banks"},
-                new Resources() {ResourceId = Guid.NewGuid(), ResourceName = "Barracks"}
+                new Resources() {ResourceId = Guid.Parse("1b98c5ab-ea44-4f7d-8d81-ffaf1777f3ec"), ResourceName = "Residental"},
+                new Resources() {ResourceId = Guid.Parse("b353a509-3e83-4863-8552-81eb1a76e18d"), ResourceName = "Banks"},
+                new Resources() {ResourceId = Guid.Parse("83b91faf-8abe-49e6-9fbb-24a8d79550e8"), ResourceName = "Barracks"}
             };
             foreach (var item in resources)
             {
@@ -155,9 +155,9 @@ namespace MyGame.DB.Migrations
             #region Players
             List<Players> players = new List<Players>()
             {
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Water", ElectricityLevel=5, EmpireStrength= 2,Level=1, LocationRefId = locations[0].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid() },
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Mineral", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[1].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()},
-                new Players() {PlayerId = Guid.NewGuid(), EmpireName = "Gas", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[2].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()}
+                new Players() {PlayerId = Guid.Parse("c6eb7022-f49e-412d-b4d6-f1e63b03a778"), EmpireName = "Water", ElectricityLevel=5, EmpireStrength= 2,Level=1, LocationRefId = locations[0].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid() },
+                new Players() {PlayerId = Guid.Parse("2a5dea45-9fa0-4ac4-ba2d-96715188bac4"), EmpireName = "Mineral", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[1].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()},
+                new Players() {PlayerId = Guid.Parse("e3da88ba-8b89-4643-b760-ba5d9603e775"), EmpireName = "Gas", ElectricityAvailable=5, EmpireStrength= 2,Level=1, LocationRefId = locations[2].LocationId, RaceRefId = races[0].RaceId, TradeBalance = 0, PlayerAccountId = Guid.NewGuid()}
             };
             foreach (var item in players)
             {
