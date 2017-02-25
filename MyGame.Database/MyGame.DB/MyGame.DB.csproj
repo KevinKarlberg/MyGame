@@ -91,6 +91,7 @@
     <Compile Include="Repositories\BuildingsRepository.cs" />
     <Compile Include="Repositories\BuyingRepository.cs" />
     <Compile Include="Repositories\ChatRepository.cs" />
+    <Compile Include="Repositories\Interfaces\GenericRepository.cs" />
     <Compile Include="Repositories\Interfaces\IJuncRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />

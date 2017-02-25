@@ -218,6 +218,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702210337003_FirstMigration.cs" />
+    <Compile Include="Migrations\201702210337003_FirstMigration.Designer.cs">
+      <DependentUpon>201702210337003_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -298,6 +303,11 @@
       <Project>{239059EC-AFC1-4D92-BF40-A540D2038F1A}</Project>
       <Name>MyGame.DB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702210337003_FirstMigration.resx">
+      <DependentUpon>201702210337003_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
