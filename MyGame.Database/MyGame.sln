@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.UpdateProgram", "MyG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYGame.DBv2", "MYGame.DBv2\MYGame.DBv2.csproj", "{451F1A82-EC8F-4BC5-9102-040633F3AEDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDb", "TestDb\TestDb.csproj", "{33DDE647-A8E1-4FD2-9479-C175460187EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
