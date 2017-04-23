@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.MVCSite", "MyGame.MVCSite\MyGame.MVCSite.csproj", "{8E3E7C57-31D1-46D8-B1C8-BC0A721E48EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.DB", "MyGame.DB\MyGame.DB.csproj", "{239059EC-AFC1-4D92-BF40-A540D2038F1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame.UpdateProgram", "MyGame.UpdateProgram\MyGame.UpdateProgram.csproj", "{4858615E-7B13-4C20-8A86-29357E6896EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYGame.DBv2", "MYGame.DBv2\MYGame.DBv2.csproj", "{451F1A82-EC8F-4BC5-9102-040633F3AEDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDb", "TestDb\TestDb.csproj", "{33DDE647-A8E1-4FD2-9479-C175460187EE}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{4858615E-7B13-4C20-8A86-29357E6896EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4858615E-7B13-4C20-8A86-29357E6896EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4858615E-7B13-4C20-8A86-29357E6896EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{451F1A82-EC8F-4BC5-9102-040633F3AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33DDE647-A8E1-4FD2-9479-C175460187EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
